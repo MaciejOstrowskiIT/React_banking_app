@@ -1,0 +1,28 @@
+.menu-item {
+    /* border: 0.2vw solid black; */
+    margin: 2px;
+    font-size: 2.2vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+        'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+
+    text-decoration: underline wavy 0.15vw
+        rgba(255, 255, 255, 0);
+    transition: text-decoration-color 400ms;
+}
+.menu-item:hover {
+    text-decoration-color: white;
+}
+.menu {
+    background-color: #e7c922c9;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.hamburger-menu {
+    font-size: 2.2vw;
+    color: white;
+
+    text-decoration: underline rgba(255, 255, 255, 0);
+}

@@ -1,0 +1,121 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #b0a9e4;
+}
+
+.background {
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+.background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape:first-child {
+    background: linear-gradient(#eb6fe0, #ff0000);
+    left: 300px;
+    top: -90px;
+}
+.shape:nth-child(2) {
+    background: linear-gradient(#000000, #148397);
+    left: -70px;
+    top: -90px;
+}
+.shape:nth-child(3) {
+    background: linear-gradient(#ff0505, #ff9d00);
+    right: -70px;
+    bottom: -90px;
+}
+
+.shape:last-child {
+    background: linear-gradient(
+        to right,
+        rgb(255, 0, 0),
+        rgb(236, 106, 106)
+    );
+    right: 310px;
+    bottom: -90px;
+}
+
+.login-div {
+    /* height: 60vh; */
+    height: 520px;
+    /* width: 22vw; */
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.034);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.068);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.911);
+    padding: 50px 35px;
+}
+
+.login-div * {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri,
+        'Trebuchet MS', sans-serif;
+    color: #fff;
+    letter-spacing: 1px;
+    outline: none;
+    border: none;
+}
+
+.login-div h3 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.074);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+::placeholder {
+    color: #e5e5e5;
+}
+
+.login-button {
+    margin-top: 50px;
+    width: 100%;
+    background-color: white;
+    color: black;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont,
+        'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+        'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: aliceblue;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas,
+        'Courier New', monospace;
+}
+
+/* html {
+    color: white;
+    background-image: url('https://images2.alphacoders.com/941/941898.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat; */
+/* } */
