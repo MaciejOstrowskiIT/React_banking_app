@@ -128,30 +128,40 @@ const Quote = () => {
         console.log(data);
     }
     async function updateTransfer(event) {
-        event.preventDefault();
-        const req = await fetch(
-            `http://${serverIPAddress}:27017/api/balance`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-access-token':
-                        localStorage.getItem('token'),
-                },
-                body: JSON.stringify({
-                    balance: tempBalance,
-                }),
-            }
-        );
-        const data = await req.json();
-        if (data.status === 'ok') {
-            setBalance(tempBalance);
-            setTempBalance('');
+        if (tempTransferAmount > balance) {
+            alert('Zbyt niski stan konta');
         } else {
-            console.log('data error');
-            navigate('/login');
+            event.preventDefault();
+            const req = await fetch(
+                `http://${serverIPAddress}:27017/api/balance`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-access-token':
+                            localStorage.getItem('token'),
+                    },
+                    body: JSON.stringify({
+                        balance:
+                            parseFloat(balance) -
+                            parseFloat(tempTransferAmount),
+                    }),
+                }
+            );
+            const data = await req.json();
+            if (data.status === 'ok') {
+                setBalance(
+                    parseFloat(balance) -
+                        parseFloat(tempTransferAmount)
+                );
+                alert('ok');
+                setTempTransferAmount('');
+            } else {
+                console.log('data error');
+                navigate('/login');
+            }
+            console.log(data);
         }
-        console.log(data);
     }
 
     return (
