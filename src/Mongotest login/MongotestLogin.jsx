@@ -31,7 +31,7 @@ function MongotestLogin() {
             localStorage.setItem('token', data.user);
             alert('Login successful');
             setIsLogged(!isLogged);
-            navigate('/quote');
+            navigate('/main');
         } else {
             alert('Not logged in');
         }
@@ -41,6 +41,7 @@ function MongotestLogin() {
         <div>
             <h1>Zaloguj się</h1>
             <form onSubmit={loginUser}>
+                <label>Email</label>
                 <input
                     type="email"
                     placeholder="Email"
@@ -49,6 +50,7 @@ function MongotestLogin() {
                         setEmail(e.target.value)
                     }
                 />
+                <label>Hasło</label>
                 <input
                     type="password"
                     placeholder="Hasło"

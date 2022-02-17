@@ -1,37 +1,36 @@
-import {
-    BrowserRouter,
-    Link,
-    Outlet,
-    Route,
-    Routes,
-    useNavigate,
-} from 'react-router-dom';
-import MongotestLogin from './Mongotest login/MongotestLogin';
-import MongotestRegister from './Mongotest/MongotestRegister';
-import Quote from './Quote/Quote';
-import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import './App.css';
 
 // let navigate = useNavigate();
 
 // function logout() {
 //     localStorage.removeItem('token');
 // }
-
-function App(props) {
-    let navigate = useNavigate();
+function App() {
     return (
         <>
             <div>
-                <h1>test</h1>
+                <header className="just-header"></header>
+
+                <h1>Apka banku</h1>
                 <nav
+                    className="navbar"
                     style={{
                         borderBottom: 'solid 1px',
                         paddingBottom: '1rem',
                     }}>
-                    <Link to="/login">Login</Link> |{' '}
-                    <Link to="/register">Register</Link>
+                    <Link to="/login">Zaloguj się</Link> |{' '}
+                    <Link to="/register">
+                        Zarejestruj się
+                    </Link>{' '}
+                    | <Link to="/main">Strona główna</Link>
+                    <p className="logged-as">
+                        Zalogowano jako:
+                    </p>
                 </nav>
                 <Outlet />
+                {/* do zrobienia: passport, cookies serwerowe zamiast localstorage, usecontext dla username itp itd */}
             </div>
         </>
     );

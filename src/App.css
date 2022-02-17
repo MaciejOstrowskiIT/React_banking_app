@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 } */
+
+.logged-as {
+    position: fixed;
+    right: 10px;
+    top: 0;
+    padding: 3px;
+}
+
+.content {
+    padding: 0.4rem;
+    background-color: #b0a9e4;
+    padding-top: 60px;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+    top: 0;
+    background-color: rgb(4, 149, 245);
+}
+
+.just-header {
+    margin-top: 60px;
+}

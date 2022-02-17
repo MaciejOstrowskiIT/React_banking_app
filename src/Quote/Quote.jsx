@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Quote = () => {
+const Quote = (props) => {
     const serverIPAddress = '192.168.1.9';
 
+    const [username, setUsername] = useState('');
     const [quote, setQuote] = useState('');
     const [tempQuote, setTempQuote] = useState('');
     const [balance, setBalance] = useState('');
@@ -31,6 +32,25 @@ const Quote = () => {
         const data = await req.json();
         if (data.status === 'ok') {
             setQuote(data.quote);
+        } else {
+            console.log('data error');
+        }
+        console.log(data);
+    }
+
+    async function populateUsername() {
+        const req = await fetch(
+            `http://${serverIPAddress}:27017/api/username`,
+            {
+                headers: {
+                    'x-access-token':
+                        localStorage.getItem('token'),
+                },
+            }
+        );
+        const data = await req.json();
+        if (data.status === 'ok') {
+            setUsername(data.name);
         } else {
             console.log('data error');
         }
@@ -69,6 +89,7 @@ const Quote = () => {
             } else {
                 populateQuote();
                 populateBalance();
+                populateUsername();
             }
         } else {
             navigate('/login');
@@ -167,25 +188,29 @@ const Quote = () => {
     return (
         <>
             <h1>Helloworld Banking System</h1>
+            <p>Zalogowano jako: {username}</p>
             <button
                 className="logout-button"
                 onClick={() => {
                     localStorage.removeItem('token');
                     navigate('/');
                 }}>
-                Logout
+                Wyloguj
             </button>
-            <h2>Your quote:{quote}</h2>
+            <h2>Twój status: {quote}</h2>
             <form onSubmit={updateQuote}>
                 <input
                     type="text"
-                    placeholder="Quote"
+                    placeholder="Status"
                     value={tempQuote}
                     onChange={(e) =>
                         setTempQuote(e.target.value)
                     }
                 />
-                <input type="submit" value="Update quote" />
+                <input
+                    type="submit"
+                    value="Zaktualizuj status"
+                />
             </form>
             <h2>
                 Stan konta:{' '}
@@ -208,6 +233,7 @@ const Quote = () => {
                     value="Ustaw stan konta"
                 />
             </form>
+            <h2>Wykonaj przelew</h2>
             <label>Kwota</label>
             <form onSubmit={updateTransfer}>
                 <input
@@ -218,6 +244,15 @@ const Quote = () => {
                         setTempTransferAmount(
                             e.target.value
                         )
+                    }
+                />
+                <label>Adres e-mail odbiorcy</label>
+                <input
+                    type="email"
+                    placeholder="Adres e-mail odbiorcy"
+                    value={tempEmail}
+                    onChange={(e) =>
+                        setTempEmail(e.target.value)
                     }
                 />
                 <input type="submit" value="Przelej" />

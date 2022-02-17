@@ -180,3 +180,27 @@ app.post('/api/balance', async (req, res) => {
         });
     }
 });
+
+app.get('/api/username', async (req, res) => {
+    const token = req.headers['x-access-token'];
+
+    try {
+        const decoded = jsonwebtoken.verify(
+            token,
+            'secret123'
+        );
+        const email = decoded.email;
+        const user = await User.findOne({ email: email });
+
+        return res.json({
+            status: 'ok',
+            name: user.name,
+        });
+    } catch (error) {
+        console.log(error);
+        res.json({
+            status: 'error',
+            error: 'invalid token',
+        });
+    }
+});

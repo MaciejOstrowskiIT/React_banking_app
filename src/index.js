@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Footer from './Footer/Footer/Footer';
-import Menu from './Main/Menu/Menu';
-import Login from './Main/Login/Login';
 import {
     BrowserRouter,
     Route,
@@ -15,6 +12,7 @@ import Register from './Main/Register/Register';
 import MongotestLogin from './Mongotest login/MongotestLogin';
 import MongotestRegister from './Mongotest/MongotestRegister';
 import Quote from './Quote/Quote';
+import ProtectedRoutes from './ProtectedRoutes';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -31,8 +29,12 @@ ReactDOM.render(
                         element={
                             <MongotestRegister />
                         }></Route>
+                    {/* <Route element={<ProtectedRoutes />}>
+                        <Route
+                            path="main"
+                            element={<Quote />}></Route> */}
                     <Route
-                        path="quote"
+                        path="main"
                         element={<Quote />}></Route>
                 </Route>
             </Routes>

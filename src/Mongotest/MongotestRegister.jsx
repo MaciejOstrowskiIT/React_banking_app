@@ -1,62 +1,71 @@
-import { useState } from "react"
-import React from "react";
+import { useState } from 'react';
+import React from 'react';
 
 function MongotestRegister() {
-
-    const serverIPAddress = '192.168.1.9'
+    const serverIPAddress = '192.168.1.9';
 
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
     async function registerUser(event) {
-        event.preventDefault()
-        const response = await fetch(`http://${serverIPAddress}:27017/api/register`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name,
-                email,
-                password,
-            }),
-        })
-        const data = await response.json()
+        event.preventDefault();
+        const response = await fetch(
+            `http://${serverIPAddress}:27017/api/register`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    password,
+                }),
+            }
+        );
+        const data = await response.json();
         console.log(data);
 
         if (data.status === 'ok') {
-            window.location.href = "/login"
+            window.location.href = '/login';
         }
     }
     return (
-
         <div>
-            <h1>Register</h1>
+            <h1>Zarejestruj się</h1>
             <form onSubmit={registerUser}>
+                <label>Imię</label>
                 <input
                     type="text"
-                    placeholder="Name"
+                    placeholder="Imię"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) =>
+                        setName(e.target.value)
+                    }
                 />
+                <label>Hasło</label>
                 <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Hasło"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) =>
+                        setPassword(e.target.value)
+                    }
                 />
+                <label>Email</label>
                 <input
                     type="email"
                     placeholder="Email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) =>
+                        setEmail(e.target.value)
+                    }
                 />
                 <input type="submit" value="Register" />
             </form>
-        </div >
-    )
-
+        </div>
+    );
 }
 
-export default MongotestRegister
+export default MongotestRegister;
