@@ -1,19 +1,25 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import React from 'react';
+import { DisplayUser } from '../routes/DisplayUser';
+import { Menu } from '../routes/Menu';
 
 export const UserContext = createContext({
-    username: '',
-    isLoggedIn: Boolean,
+    contextUsername: '',
+    setIsLoggedIn: (auth) => {},
 });
 
 export const UserContextProvider = (props) => {
-    const value = {
-        username: 'test',
-        isLoggedIn: true,
-    };
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     return (
-        <UserContext.Provider value={value}>
+        <UserContext.Provider
+            value={{
+                isLoggedIn,
+                setIsLoggedIn,
+            }}>
             {props.children}
+            <Menu />
+            <DisplayUser />
         </UserContext.Provider>
     );
 };

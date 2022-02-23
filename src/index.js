@@ -11,6 +11,7 @@ import { Quote } from './routes/Quote';
 // import ProtectedRoutes from './ProtectedRoutes';
 import Login from './routes/Login';
 import Register from './routes/Register';
+import { UserContextProvider } from './context/UserContextProvider';
 
 ReactDOM.render(
     <React.StrictMode>

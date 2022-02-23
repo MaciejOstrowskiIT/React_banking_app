@@ -1,7 +1,8 @@
 import jsonwebtoken from 'jsonwebtoken';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContextProvider';
 
 export const Quote = (props) => {
     const serverIPAddress = '192.168.1.9';
@@ -16,6 +17,10 @@ export const Quote = (props) => {
     const [tempTransferAmount, setTempTransferAmount] =
         useState('');
     let navigate = useNavigate();
+
+    const { setIsLoggedIn } = useContext(UserContext);
+
+    const handleLogin = () => setIsLoggedIn(true);
 
     async function populateQuote() {
         const req = await fetch(
@@ -88,6 +93,7 @@ export const Quote = (props) => {
                 populateQuote();
                 populateBalance();
                 populateUsername();
+                handleLogin();
             }
         } else {
             navigate('/login');
@@ -187,14 +193,6 @@ export const Quote = (props) => {
         <>
             <h1>Helloworld Banking System</h1>
             <p>Zalogowano jako: {username}</p>
-            <button
-                className="logout-button"
-                onClick={() => {
-                    localStorage.removeItem('token');
-                    navigate('/');
-                }}>
-                Wyloguj
-            </button>
             <h2>Twój status: {quote}</h2>
             <form onSubmit={updateQuote}>
                 <input

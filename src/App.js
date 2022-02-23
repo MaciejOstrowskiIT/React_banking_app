@@ -1,6 +1,8 @@
 import { Link, Outlet } from 'react-router-dom';
-import React from 'react';
+import React, { useContext } from 'react';
 import './App.css';
+import { UserContextProvider } from './context/UserContextProvider';
+import { Menu } from './routes/Menu';
 
 // let navigate = useNavigate();
 
@@ -10,29 +12,7 @@ import './App.css';
 function App() {
     return (
         <>
-            <div>
-                <header className="just-header"></header>
-
-                <h1>Apka banku</h1>
-                <nav
-                    className="navbar"
-                    style={{
-                        borderBottom: 'solid 1px',
-                        paddingBottom: '1rem',
-                    }}>
-                    <Link to="/login">Zaloguj się</Link> |{' '}
-                    <Link to="/register">
-                        Zarejestruj się
-                    </Link>{' '}
-                    | <Link to="/main">Strona główna</Link>
-                </nav>
-                {/* <p className="logged-as">
-                    Zalogowano jako:
-                    {userContextValue.username}
-                </p> */}
-                <Outlet />
-                {/* do zrobienia: passport, cookies serwerowe zamiast localstorage, usecontext dla username itp itd */}
-            </div>
+            <UserContextProvider></UserContextProvider>
         </>
     );
 }

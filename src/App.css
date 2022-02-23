@@ -79,3 +79,9 @@ input {
     font-size: 14px;
     font-weight: 300;
 }
+
+a {
+    display: inline-block;
+    word-wrap: normal;
+    padding: 5px;
+}
