@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
 
 // let navigate = useNavigate();
@@ -25,10 +25,11 @@ function App() {
                         Zarejestruj się
                     </Link>{' '}
                     | <Link to="/main">Strona główna</Link>
-                    <p className="logged-as">
-                        Zalogowano jako:
-                    </p>
                 </nav>
+                {/* <p className="logged-as">
+                    Zalogowano jako:
+                    {userContextValue.username}
+                </p> */}
                 <Outlet />
                 {/* do zrobienia: passport, cookies serwerowe zamiast localstorage, usecontext dla username itp itd */}
             </div>

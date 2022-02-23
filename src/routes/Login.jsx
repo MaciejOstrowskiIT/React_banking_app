@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function MongotestLogin() {
+function Login() {
     let navigate = useNavigate();
     const serverIPAddress = '192.168.1.9';
 
@@ -66,4 +66,4 @@ function MongotestLogin() {
     );
 }
 
-export default MongotestLogin;
+export default Login;

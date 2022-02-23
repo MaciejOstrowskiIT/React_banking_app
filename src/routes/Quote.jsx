@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Quote = (props) => {
+export const Quote = (props) => {
     const serverIPAddress = '192.168.1.9';
 
     const [username, setUsername] = useState('');
@@ -14,8 +14,6 @@ const Quote = (props) => {
     const [currency, setCurrency] = useState('');
     const [tempEmail, setTempEmail] = useState('');
     const [tempTransferAmount, setTempTransferAmount] =
-        useState('');
-    const [tempAfterTransfer, setTempAfterTransfer] =
         useState('');
     let navigate = useNavigate();
 
@@ -260,5 +258,3 @@ const Quote = (props) => {
         </>
     );
 };
-
-export default Quote;

@@ -57,8 +57,13 @@
     overflow: hidden;
     top: 0;
     background-color: rgb(4, 149, 245);
+    text-align: center;
 }
 
 .just-header {
     margin-top: 60px;
+}
+
+body {
+    background-color: silver;
 }

@@ -3,7 +3,7 @@ import './Login.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Login() {
+function BeautifulLogin() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
 
@@ -63,4 +63,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default BeautifulLogin;

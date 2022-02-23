@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
 
-function MongotestRegister() {
+function Register() {
     const serverIPAddress = '192.168.1.9';
 
     const [name, setName] = useState('');
@@ -68,4 +68,4 @@ function MongotestRegister() {
     );
 }
 
-export default MongotestRegister;
+export default Register;
