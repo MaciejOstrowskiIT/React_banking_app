@@ -22,6 +22,18 @@ ReactDOM.render(
                         path="login"
                         element={<Login />}></Route>
                     <Route
+                        path="*"
+                        element={
+                            <main>
+                                <p
+                                    style={{
+                                        fontSize: '15px',
+                                    }}>
+                                    Strona nie istnieje
+                                </p>
+                            </main>
+                        }></Route>
+                    <Route
                         path="register"
                         element={<Register />}></Route>
                     {/* <Route element={<ProtectedRoutes />}>

@@ -11,7 +11,7 @@ export const Quote = (props) => {
     const [quote, setQuote] = useState('');
     const [tempQuote, setTempQuote] = useState('');
     const [balance, setBalance] = useState('');
-    const [tempBalance, setTempBalance] = useState('');
+    const [tempBalance, setTempBalance] = useState('0');
     const [currency, setCurrency] = useState('');
     const [tempEmail, setTempEmail] = useState('');
     const [tempTransferAmount, setTempTransferAmount] =
@@ -127,31 +127,36 @@ export const Quote = (props) => {
         console.log(data);
     }
     async function updateBalance(event) {
-        event.preventDefault();
-        const req = await fetch(
-            `http://${serverIPAddress}:27017/api/balance`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-access-token':
-                        localStorage.getItem('token'),
-                },
-                body: JSON.stringify({
-                    balance: tempBalance,
-                }),
-            }
-        );
-        const data = await req.json();
-        if (data.status === 'ok') {
-            setBalance(tempBalance);
-            setTempBalance('');
+        if (isNaN(parseFloat(tempBalance))) {
+            setTempBalance('0');
         } else {
-            console.log('data error');
-            navigate('/login');
+            event.preventDefault();
+            const req = await fetch(
+                `http://${serverIPAddress}:27017/api/balance`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-access-token':
+                            localStorage.getItem('token'),
+                    },
+                    body: JSON.stringify({
+                        balance: tempBalance,
+                    }),
+                }
+            );
+            const data = await req.json();
+            if (data.status === 'ok') {
+                setBalance(tempBalance);
+                setTempBalance('');
+            } else {
+                console.log('data error');
+                navigate('/login');
+            }
+            console.log(data);
         }
-        console.log(data);
     }
+
     async function updateTransfer(event) {
         if (tempTransferAmount > balance) {
             alert('Zbyt niski stan konta');
@@ -217,6 +222,7 @@ export const Quote = (props) => {
             <label>Kwota</label>
             <form onSubmit={updateBalance}>
                 <input
+                    defaultValue={0}
                     type="text"
                     placeholder="Kwota"
                     value={tempBalance}
