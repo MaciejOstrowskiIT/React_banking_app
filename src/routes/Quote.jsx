@@ -196,7 +196,6 @@ export const Quote = (props) => {
 
     return (
         <>
-            <h1>Helloworld Banking System</h1>
             <p>Zalogowano jako: {username}</p>
             <h2>Twój status: {quote}</h2>
             <form onSubmit={updateQuote}>

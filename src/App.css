@@ -55,20 +55,23 @@
     padding: 0px;
     overflow: hidden;
     top: 0;
-    background-color: rgb(245, 4, 16);
+    background-color: rgb(255, 49, 59);
     text-align: center;
-    padding-bottom: 0px !important;
+    border-bottom: 3px solid black;
+    padding-bottom: 3px !important;
 }
 
 .navbar > a {
     text-decoration: none;
     border: 2px solid black;
     padding: 5px;
+    margin-left: 20px;
 }
 .navbar > a:hover {
     background-color: black;
     color: white;
 }
+
 .just-header {
     margin-top: 60px;
 }

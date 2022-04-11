@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../routes/styles/login.css';
 
 function Login() {
     let navigate = useNavigate();
@@ -38,7 +39,7 @@ function Login() {
         console.log(data);
     }
     return (
-        <div>
+        <div className="login">
             <h1>Zaloguj się</h1>
             <form onSubmit={loginUser}>
                 <label>Email</label>

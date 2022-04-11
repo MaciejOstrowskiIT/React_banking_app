@@ -12,6 +12,7 @@ import { Quote } from './routes/Quote';
 import Login from './routes/Login';
 import Register from './routes/Register';
 import { UserContextProvider } from './context/UserContextProvider';
+import { Landing } from './routes/Landing';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -23,16 +24,7 @@ ReactDOM.render(
                         element={<Login />}></Route>
                     <Route
                         path="*"
-                        element={
-                            <main>
-                                <p
-                                    style={{
-                                        fontSize: '15px',
-                                    }}>
-                                    Strona nie istnieje
-                                </p>
-                            </main>
-                        }></Route>
+                        element={<Landing />}></Route>
                     <Route
                         path="register"
                         element={<Register />}></Route>

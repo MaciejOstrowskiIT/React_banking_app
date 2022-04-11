@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     Link,
     Outlet,
     useNavigate,
 } from 'react-router-dom';
+import './styles/menu.css';
 import { UserContext } from '../context/UserContextProvider';
 
 export const Menu = () => {
@@ -16,7 +17,7 @@ export const Menu = () => {
             <div>
                 <header className="just-header"></header>
 
-                <h1>Apka banku</h1>
+                <h1>React Banking App</h1>
                 <nav
                     className="navbar"
                     style={{
