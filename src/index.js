@@ -13,6 +13,10 @@ import Login from './routes/Login';
 import Register from './routes/Register';
 import { UserContextProvider } from './context/UserContextProvider';
 import { Landing } from './routes/Landing';
+import { Transfers } from './routes/Transfers';
+import { Cards } from './routes/Cards';
+import { Help } from './routes/Help';
+import { Settings } from './routes/Settings';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -23,11 +27,23 @@ ReactDOM.render(
                         path="login"
                         element={<Login />}></Route>
                     <Route
-                        path="*"
-                        element={<Landing />}></Route>
-                    <Route
                         path="register"
                         element={<Register />}></Route>
+                    <Route
+                        path="settings"
+                        element={<Settings />}></Route>
+                    <Route
+                        path="help"
+                        element={<Help />}></Route>
+                    <Route
+                        path="cards"
+                        element={<Cards />}></Route>
+                    <Route
+                        path="transfers"
+                        element={<Transfers />}></Route>
+                    <Route
+                        path="*"
+                        element={<Landing />}></Route>
                     {/* <Route element={<ProtectedRoutes />}>
                         <Route
                             path="main"

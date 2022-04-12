@@ -59,7 +59,7 @@ export const Menu = () => {
                     )}
                     {userContextValue.isLoggedIn && (
                         <NavLink
-                            to="/1"
+                            to="/transfers"
                             className={(navData) =>
                                 navData.isActive
                                     ? 'active-link'
@@ -70,7 +70,7 @@ export const Menu = () => {
                     )}
                     {userContextValue.isLoggedIn && (
                         <NavLink
-                            to="/2"
+                            to="/cards"
                             className={(navData) =>
                                 navData.isActive
                                     ? 'active-link'
@@ -81,7 +81,7 @@ export const Menu = () => {
                     )}
                     {userContextValue.isLoggedIn && (
                         <NavLink
-                            to="/3"
+                            to="/help"
                             className={(navData) =>
                                 navData.isActive
                                     ? 'active-link'
@@ -92,7 +92,7 @@ export const Menu = () => {
                     )}
                     {userContextValue.isLoggedIn && (
                         <NavLink
-                            to="/4"
+                            to="/settings"
                             className={(navData) =>
                                 navData.isActive
                                     ? 'active-link'
