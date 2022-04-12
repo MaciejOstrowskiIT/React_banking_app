@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import {
-    Link,
+    NavLink,
     Outlet,
     useNavigate,
 } from 'react-router-dom';
@@ -25,20 +25,84 @@ export const Menu = () => {
                         paddingBottom: '1rem',
                     }}>
                     {!userContextValue.isLoggedIn && (
-                        <Link to="/login">Zaloguj się</Link>
+                        <NavLink
+                            to="/login"
+                            className={(navData) =>
+                                navData.isActive
+                                    ? 'active-link'
+                                    : ''
+                            }>
+                            Zaloguj się
+                        </NavLink>
                     )}
                     {!userContextValue.isLoggedIn && (
-                        <Link to="/register">
+                        <NavLink
+                            to="/register"
+                            className={(navData) =>
+                                navData.isActive
+                                    ? 'active-link'
+                                    : ''
+                            }>
                             Zarejestruj się
-                        </Link>
+                        </NavLink>
                     )}
                     {userContextValue.isLoggedIn && (
-                        <Link to="/main">
+                        <NavLink
+                            to="/main"
+                            className={(navData) =>
+                                navData.isActive
+                                    ? 'active-link'
+                                    : ''
+                            }>
                             Strona główna
-                        </Link>
+                        </NavLink>
                     )}
                     {userContextValue.isLoggedIn && (
-                        <Link
+                        <NavLink
+                            to="/1"
+                            className={(navData) =>
+                                navData.isActive
+                                    ? 'active-link'
+                                    : ''
+                            }>
+                            Przelewy
+                        </NavLink>
+                    )}
+                    {userContextValue.isLoggedIn && (
+                        <NavLink
+                            to="/2"
+                            className={(navData) =>
+                                navData.isActive
+                                    ? 'active-link'
+                                    : ''
+                            }>
+                            Karty
+                        </NavLink>
+                    )}
+                    {userContextValue.isLoggedIn && (
+                        <NavLink
+                            to="/3"
+                            className={(navData) =>
+                                navData.isActive
+                                    ? 'active-link'
+                                    : ''
+                            }>
+                            Pomoc
+                        </NavLink>
+                    )}
+                    {userContextValue.isLoggedIn && (
+                        <NavLink
+                            to="/4"
+                            className={(navData) =>
+                                navData.isActive
+                                    ? 'active-link'
+                                    : ''
+                            }>
+                            Ustawienia
+                        </NavLink>
+                    )}
+                    {userContextValue.isLoggedIn && (
+                        <NavLink
                             to="/"
                             onClick={() => {
                                 localStorage.removeItem(
@@ -47,21 +111,10 @@ export const Menu = () => {
                                 handleLogout();
                             }}>
                             Wyloguj
-                        </Link>
+                        </NavLink>
                     )}
                 </nav>
-                <p></p>
-                {/* <button
-                className="logout-button"
-                onClick={() => {
-                    localStorage.removeItem('token');
-                    navigate('/');
-                    handleLogout();
-                }}>
-                Wyloguj
-            </button> */}
                 <Outlet />
-                {/* do zrobienia: passport, cookies serwerowe zamiast localstorage, usecontext dla username itp itd */}
             </div>
         </>
     );

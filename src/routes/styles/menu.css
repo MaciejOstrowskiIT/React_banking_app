@@ -11,9 +11,14 @@
 }
 .navbar > a:hover {
     cursor: pointer;
+    color: rgb(44, 40, 255);
 }
 .navbar > a:last-child {
     margin-right: 0px;
+}
+
+.active-link {
+    color: red;
 }
 
 @media (max-width: 768px) {
