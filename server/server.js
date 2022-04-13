@@ -61,7 +61,10 @@ app.post('/api/login', async (req, res) => {
     });
 
     if (!user) {
-        return { status: 'error', error: 'invalid login' };
+        return res.json({
+            status: 'error',
+            error: 'invalid login',
+        });
     }
 
     const isPasswordValid = await bcrypt.compare(
