@@ -1,24 +1,29 @@
 import React, { useContext, useState } from 'react';
-import {
-    NavLink,
-    Outlet,
-    useNavigate,
-} from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import './styles/menu.css';
-import { UserContext } from '../context/UserContextProvider';
+import {
+    UserContext,
+    UserContextProvider,
+} from '../context/UserContextProvider';
 
 export const Menu = () => {
-    const { setContextIsLoggedIn } =
-        useContext(UserContext);
+    const handleLogout = () => {
+        UserContextProvider.clearContext();
+    };
 
-    const handleLogout = () => setContextIsLoggedIn(false);
     const userContextValue = useContext(UserContext);
     return (
         <>
             <div>
-                <header className="just-header"></header>
+                <header className="just-header">
+                    <h1>React Banking App</h1>
+                    <p className="logged-as-paragraph">
+                        {userContextValue.contextIsLoggedIn
+                            ? `Zalogowano jako: ${userContextValue.contextUsername}`
+                            : 'Użytkownik niezalogowany'}
+                    </p>
+                </header>
 
-                <h1>React Banking App</h1>
                 <nav
                     className="navbar"
                     style={{

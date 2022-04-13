@@ -17,6 +17,7 @@ import { Transfers } from './routes/Transfers';
 import { Cards } from './routes/Cards';
 import { Help } from './routes/Help';
 import { Settings } from './routes/Settings';
+import { UserProducts } from './routes/UserProducts';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -35,9 +36,13 @@ ReactDOM.render(
                     <Route
                         path="help"
                         element={<Help />}></Route>
-                    <Route
-                        path="cards"
-                        element={<Cards />}></Route>
+                    <Route path="cards" element={<Cards />}>
+                        <Route
+                            path="user-products"
+                            element={
+                                <UserProducts />
+                            }></Route>
+                    </Route>
                     <Route
                         path="transfers"
                         element={<Transfers />}></Route>

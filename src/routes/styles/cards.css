@@ -1,0 +1,17 @@
+.cards-nav {
+    position: fi;
+    margin-left: 20px;
+    border-right: 1px solid black;
+    width: 200px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.cards-nav > a {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 20px;
+    /* border: 1px solid black; */
+    width: 200px;
+    text-align: center;
+}

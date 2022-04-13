@@ -1,8 +1,7 @@
 import jsonwebtoken from 'jsonwebtoken';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-export const Settings = () => {
+export const UserProducts = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -17,10 +16,9 @@ export const Settings = () => {
         }
     }, []);
     return (
-        <>
-            <div>
-                <p>Strona "Ustawienia"</p>
-            </div>
-        </>
+        <div>
+            <p>Numer karty:</p>
+            <p>Ważność:</p>
+        </div>
     );
 };

@@ -1,6 +1,5 @@
 import { createContext, useState } from 'react';
 import React from 'react';
-import { DisplayUser } from '../routes/DisplayUser';
 import { Menu } from '../routes/Menu';
 
 export const UserContext = createContext({
@@ -8,9 +7,9 @@ export const UserContext = createContext({
     contextBalance: '',
     contextIsLoggedIn: false,
     contextCurrency: 'PLN',
-    setContextIsLoggedIn: (auth) => {},
-    setContextBalance: (auth) => {},
-    setContextUsername: (auth) => {},
+    setContextIsLoggedIn: () => {},
+    setContextBalance: () => {},
+    setContextUsername: () => {},
     setContextCurrency: () => {},
 });
 
@@ -23,6 +22,13 @@ export const UserContextProvider = (props) => {
         useState('');
     const [contextCurrency, setContextCurrency] =
         useState('');
+
+    const clearContext = () => {
+        setContextIsLoggedIn(false);
+        setContextBalance('');
+        setContextUsername('');
+        setContextCurrency('');
+    };
 
     return (
         <UserContext.Provider
@@ -38,7 +44,6 @@ export const UserContextProvider = (props) => {
             }}>
             {props.children}
             <Menu />
-            <DisplayUser />
         </UserContext.Provider>
     );
 };
