@@ -1,4 +1,5 @@
 import React from 'react';
+import InstagramEmbed from 'react-instagram-embed';
 
 export const Transfers = () => {
     return (

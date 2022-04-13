@@ -18,9 +18,14 @@ export const Quote = (props) => {
         useState('');
     let navigate = useNavigate();
 
-    const { setIsLoggedIn } = useContext(UserContext);
+    const {
+        setContextIsLoggedIn,
+        setContextBalance,
+        setContextUsername,
+        setContextCurrency,
+    } = useContext(UserContext);
 
-    const handleLogin = () => setIsLoggedIn(true);
+    const handleLogin = () => setContextIsLoggedIn(true);
 
     async function populateQuote() {
         const req = await fetch(
@@ -54,6 +59,7 @@ export const Quote = (props) => {
         const data = await req.json();
         if (data.status === 'ok') {
             setUsername(data.name);
+            setContextUsername(data.name);
         } else {
             console.log('data error');
         }
@@ -74,6 +80,8 @@ export const Quote = (props) => {
         if (data.status === 'ok') {
             setBalance(data.balance);
             setCurrency(data.currency);
+            setContextBalance(data.balance);
+            setContextCurrency(data.currency);
         } else {
             console.log('data error');
         }

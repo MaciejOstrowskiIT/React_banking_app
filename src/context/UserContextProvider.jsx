@@ -5,17 +5,36 @@ import { Menu } from '../routes/Menu';
 
 export const UserContext = createContext({
     contextUsername: '',
-    setIsLoggedIn: (auth) => {},
+    contextBalance: '',
+    contextIsLoggedIn: false,
+    contextCurrency: 'PLN',
+    setContextIsLoggedIn: (auth) => {},
+    setContextBalance: (auth) => {},
+    setContextUsername: (auth) => {},
+    setContextCurrency: () => {},
 });
 
 export const UserContextProvider = (props) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [contextIsLoggedIn, setContextIsLoggedIn] =
+        useState(false);
+    const [contextBalance, setContextBalance] =
+        useState('');
+    const [contextUsername, setContextUsername] =
+        useState('');
+    const [contextCurrency, setContextCurrency] =
+        useState('');
 
     return (
         <UserContext.Provider
             value={{
-                isLoggedIn,
-                setIsLoggedIn,
+                contextUsername,
+                contextBalance,
+                contextIsLoggedIn,
+                contextCurrency,
+                setContextIsLoggedIn,
+                setContextBalance,
+                setContextUsername,
+                setContextCurrency,
             }}>
             {props.children}
             <Menu />

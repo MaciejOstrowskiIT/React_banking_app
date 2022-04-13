@@ -8,9 +8,10 @@ import './styles/menu.css';
 import { UserContext } from '../context/UserContextProvider';
 
 export const Menu = () => {
-    const { setIsLoggedIn } = useContext(UserContext);
+    const { setContextIsLoggedIn } =
+        useContext(UserContext);
 
-    const handleLogout = () => setIsLoggedIn(false);
+    const handleLogout = () => setContextIsLoggedIn(false);
     const userContextValue = useContext(UserContext);
     return (
         <>
@@ -24,7 +25,7 @@ export const Menu = () => {
                         borderBottom: 'solid 1px',
                         paddingBottom: '1rem',
                     }}>
-                    {!userContextValue.isLoggedIn && (
+                    {!userContextValue.contextIsLoggedIn && (
                         <NavLink
                             to="/login"
                             className={(navData) =>
@@ -35,7 +36,7 @@ export const Menu = () => {
                             Zaloguj się
                         </NavLink>
                     )}
-                    {!userContextValue.isLoggedIn && (
+                    {!userContextValue.contextIsLoggedIn && (
                         <NavLink
                             to="/register"
                             className={(navData) =>
@@ -46,7 +47,7 @@ export const Menu = () => {
                             Zarejestruj się
                         </NavLink>
                     )}
-                    {userContextValue.isLoggedIn && (
+                    {userContextValue.contextIsLoggedIn && (
                         <NavLink
                             to="/main"
                             className={(navData) =>
@@ -57,7 +58,7 @@ export const Menu = () => {
                             Strona główna
                         </NavLink>
                     )}
-                    {userContextValue.isLoggedIn && (
+                    {userContextValue.contextIsLoggedIn && (
                         <NavLink
                             to="/transfers"
                             className={(navData) =>
@@ -68,7 +69,7 @@ export const Menu = () => {
                             Przelewy
                         </NavLink>
                     )}
-                    {userContextValue.isLoggedIn && (
+                    {userContextValue.contextIsLoggedIn && (
                         <NavLink
                             to="/cards"
                             className={(navData) =>
@@ -79,7 +80,7 @@ export const Menu = () => {
                             Karty
                         </NavLink>
                     )}
-                    {userContextValue.isLoggedIn && (
+                    {userContextValue.contextIsLoggedIn && (
                         <NavLink
                             to="/help"
                             className={(navData) =>
@@ -90,7 +91,7 @@ export const Menu = () => {
                             Pomoc
                         </NavLink>
                     )}
-                    {userContextValue.isLoggedIn && (
+                    {userContextValue.contextIsLoggedIn && (
                         <NavLink
                             to="/settings"
                             className={(navData) =>
@@ -101,7 +102,7 @@ export const Menu = () => {
                             Ustawienia
                         </NavLink>
                     )}
-                    {userContextValue.isLoggedIn && (
+                    {userContextValue.contextIsLoggedIn && (
                         <NavLink
                             to="/"
                             onClick={() => {

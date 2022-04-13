@@ -50,7 +50,7 @@ app.post('/api/register', async (req, res) => {
         res.json({ status: 'ok' });
     } catch (err) {
         res.json({
-            status: 'not ok',
+            status: 'Something went wrong!',
             error: 'duplicated email',
         });
     }
