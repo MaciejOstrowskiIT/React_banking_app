@@ -34,7 +34,6 @@ function Login() {
             setIsLogged(!isLogged);
             navigate('/main');
             alert('Logged in');
-            console.log(typeof dataString);
         } else {
             alert('Not logged in');
         }
