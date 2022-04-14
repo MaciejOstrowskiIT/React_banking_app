@@ -10,8 +10,17 @@ const User = new mongoose.Schema(
         },
         password: { type: String, required: true },
         quote: { type: String },
-        balance: { type: Number, required: true },
-        currency: { type: String, required: true },
+        balance: {
+            type: Number,
+            required: true,
+            default: 0,
+        },
+        currency: {
+            type: String,
+            required: true,
+            default: 'PLN',
+        },
+        lastLogin: { type: Date, default: Date.now },
     },
     {
         collection: 'user-data',

@@ -7,7 +7,7 @@ import { UserContext } from '../context/UserContextProvider';
 export const Quote = (props) => {
     const serverIPAddress = '192.168.1.9';
 
-    const [searchedUsername, setSearchedUsername] =
+    const [resultUsername, setResultUsername] =
         useState('');
     const [
         searchedUsernameInput,
@@ -71,7 +71,7 @@ export const Quote = (props) => {
         }
         console.log(data);
     }
-    async function searchUser(event) {
+    async function searchUser() {
         const response = await fetch(
             `http://${serverIPAddress}:27017/api/searchUser`,
             {
@@ -88,30 +88,14 @@ export const Quote = (props) => {
         let dataString = JSON.stringify(data).slice(1, 14);
 
         if (dataString == '"status":"ok"') {
-            // alert('Logged in');
+            setResultUsername(data.user);
+            console.log(resultUsername);
             console.log('OK');
         } else {
             console.log('NOT OK');
         }
         console.log(data);
     }
-
-    // async function updateQuote(event) {
-    //     event.preventDefault();
-    //     const req = await fetch(
-    //         `http://${serverIPAddress}:27017/api/quote`,
-    //         {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'x-access-token':
-    //                     localStorage.getItem('token'),
-    //             },
-    //             body: JSON.stringify({
-    //                 quote: tempQuote,
-    //             }),
-    //         }
-    //     );
 
     async function populateBalance() {
         const req = await fetch(
@@ -180,6 +164,34 @@ export const Quote = (props) => {
             navigate('/login');
         }
         console.log(data);
+    }
+
+    let date = Date.now();
+    const [sender, setSender] = useState('aaa');
+    const [amount, setAmount] = useState(111);
+    const [recipient, setRecipient] = useState('bbb');
+    async function registerTransaction() {
+        const response = await fetch(
+            `http://${serverIPAddress}:27017/api/transactionRegister`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    date,
+                    sender,
+                    amount,
+                    recipient,
+                }),
+            }
+        );
+        const data = await response.json();
+        console.log(data);
+
+        if (data.status === 'ok') {
+            console.log('created transaction log');
+        }
     }
     async function updateBalance(event) {
         if (isNaN(parseFloat(tempBalance))) {
@@ -325,11 +337,15 @@ export const Quote = (props) => {
                     );
                 }}
             />
-            <input
-                type="submit"
-                onClick={() => console.log('test')}
-                value="SearchUsertest2"
-            />
+            <form
+                onSubmit={() => {
+                    registerTransaction();
+                }}>
+                <input
+                    type="submit"
+                    value="Register Transaction"
+                />
+            </form>
         </>
     );
 };

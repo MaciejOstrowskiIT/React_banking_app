@@ -12,6 +12,7 @@ app.use(require('./routes/record'));
 const dbo = require('./db/conn');
 const { use } = require('./routes/record');
 const User = require('./models/user.model');
+const Transaction = require('./models/transaction.model');
 const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -44,8 +45,6 @@ app.post('/api/register', async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: newPassword,
-            balance: 0,
-            currency: 'PLN',
         });
         res.json({ status: 'ok' });
     } catch (err) {
@@ -238,5 +237,22 @@ app.post('/api/searchUser', async (req, res) => {
         });
     } else {
         return res.json({ status: 'ok', user: user.email });
+    }
+});
+
+app.post('/api/transactionRegister', async (req, res) => {
+    try {
+        await Transaction.create({
+            date: req.body.date,
+            sender: req.body.sender,
+            amount: req.body.amount,
+            recipient: req.body.recipient,
+        });
+        res.json({ status: 'ok' });
+    } catch (err) {
+        res.json({
+            status: 'Something went wrong!',
+            error: 'duplicated transaction',
+        });
     }
 });
