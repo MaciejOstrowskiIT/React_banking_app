@@ -183,7 +183,6 @@ app.post('/api/balance', async (req, res) => {
         });
     }
 });
-
 app.get('/api/username', async (req, res) => {
     const token = req.headers['x-access-token'];
 
@@ -205,5 +204,39 @@ app.get('/api/username', async (req, res) => {
             status: 'error',
             error: 'invalid token',
         });
+    }
+});
+
+app.get('/api/searchUser', async (req, res) => {
+    try {
+        const email = req.headers['usernameFromInput'];
+        console.log(email);
+        const user = await User.findOne({ email: email });
+
+        return res.json({
+            status: 'ok',
+            username: user.email,
+        });
+    } catch (error) {
+        console.log(error);
+        res.json({
+            status: 'error',
+            error: 'invalid token',
+        });
+    }
+});
+
+app.post('/api/searchUser', async (req, res) => {
+    const user = await User.findOne({
+        email: req.body.searchedUsernameInput,
+    });
+
+    if (!user) {
+        return res.json({
+            status: 'error',
+            error: 'invalid login',
+        });
+    } else {
+        return res.json({ status: 'ok', user: user.email });
     }
 });

@@ -7,6 +7,12 @@ import { UserContext } from '../context/UserContextProvider';
 export const Quote = (props) => {
     const serverIPAddress = '192.168.1.9';
 
+    const [searchedUsername, setSearchedUsername] =
+        useState('');
+    const [
+        searchedUsernameInput,
+        setSearchedUsernameInput,
+    ] = useState('222@222');
     const [username, setUsername] = useState('');
     const [quote, setQuote] = useState('');
     const [tempQuote, setTempQuote] = useState('');
@@ -65,6 +71,47 @@ export const Quote = (props) => {
         }
         console.log(data);
     }
+    async function searchUser(event) {
+        const response = await fetch(
+            `http://${serverIPAddress}:27017/api/searchUser`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    searchedUsernameInput,
+                }),
+            }
+        );
+        const data = await response.json();
+        let dataString = JSON.stringify(data).slice(1, 14);
+
+        if (dataString == '"status":"ok"') {
+            // alert('Logged in');
+            console.log('OK');
+        } else {
+            console.log('NOT OK');
+        }
+        console.log(data);
+    }
+
+    // async function updateQuote(event) {
+    //     event.preventDefault();
+    //     const req = await fetch(
+    //         `http://${serverIPAddress}:27017/api/quote`,
+    //         {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'x-access-token':
+    //                     localStorage.getItem('token'),
+    //             },
+    //             body: JSON.stringify({
+    //                 quote: tempQuote,
+    //             }),
+    //         }
+    //     );
 
     async function populateBalance() {
         const req = await fetch(
@@ -265,6 +312,24 @@ export const Quote = (props) => {
                 />
                 <input type="submit" value="Przelej" />
             </form>
+            <input
+                type="submit"
+                onClick={() => searchUser()}
+                value="SearchUsertest"
+            />
+            <input
+                type="text"
+                onChange={(e) => {
+                    setSearchedUsernameInput(
+                        e.target.value
+                    );
+                }}
+            />
+            <input
+                type="submit"
+                onClick={() => console.log('test')}
+                value="SearchUsertest2"
+            />
         </>
     );
 };
