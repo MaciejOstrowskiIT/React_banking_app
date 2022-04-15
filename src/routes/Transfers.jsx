@@ -1,15 +1,27 @@
 import jsonwebtoken from 'jsonwebtoken';
-import React, { useEffect, useState } from 'react';
+import React, {
+    useContext,
+    useEffect,
+    useState,
+} from 'react';
 import InstagramEmbed from 'react-instagram-embed';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContextProvider';
 
 export const Transfers = () => {
+    const serverIPAddress = '192.168.1.9';
     const [transferAmount, setTransferAmount] =
         useState('');
     const [targerUserEmail, setTargetUserEmail] =
         useState('');
+    let date = Date.now();
+    const [sender, setSender] = useState('');
+    const [amount, setAmount] = useState(1);
+    const [recipient, setRecipient] = useState('');
+    const [success, setSuccess] = useState(false);
 
     const navigate = useNavigate();
+
     useEffect(() => {
         const token = localStorage.getItem('token');
 
@@ -19,36 +31,76 @@ export const Transfers = () => {
                 navigate('/login');
             }
         } else {
-            navigate('/login');
         }
     }, []);
+
+    async function registerTransaction(e) {
+        e.preventDefault();
+        const response = await fetch(
+            `http://${serverIPAddress}:27017/api/transactionRegister`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    date,
+                    sender,
+                    amount,
+                    recipient,
+                    success,
+                }),
+            }
+        );
+        const data = await response.json();
+        console.log(data);
+
+        if (data.status === 'ok') {
+            console.log('created transaction log');
+        }
+    }
 
     return (
         <>
             <div>
                 <p>Przelewy</p>
-                <form onSubmit={''}>
+                <form onSubmit={registerTransaction}>
                     <input
                         type="text"
-                        placeholder="Kwota"
-                        value={transferAmount}
+                        placeholder="sender"
+                        value={sender}
                         onChange={(e) => {
-                            setTransferAmount(
-                                e.target.value
-                            );
+                            setSender(e.target.value);
                         }}
                     />
                     <input
-                        type="email"
-                        placeholder="E-mail odbiorcy"
-                        value={targerUserEmail}
+                        type="text"
+                        placeholder="amount"
+                        value={amount}
                         onChange={(e) => {
-                            setTargetUserEmail(
-                                e.target.value
-                            );
+                            setAmount(e.target.value);
                         }}
                     />
-                    <input type="submit" value="Przelej" />
+                    <input
+                        type="text"
+                        value={recipient}
+                        placeholder="recipient"
+                        onChange={(e) => {
+                            setRecipient(e.target.value);
+                        }}
+                    />
+                    <input
+                        type="text"
+                        placeholder="success"
+                        value={success}
+                        onChange={(e) => {
+                            setSuccess(e.target.value);
+                        }}
+                    />
+                    <input
+                        type="submit"
+                        value="Register Transaction"
+                    />
                 </form>
             </div>
         </>

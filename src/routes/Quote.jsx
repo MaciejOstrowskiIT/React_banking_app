@@ -166,33 +166,6 @@ export const Quote = (props) => {
         console.log(data);
     }
 
-    let date = Date.now();
-    const [sender, setSender] = useState('aaa');
-    const [amount, setAmount] = useState(111);
-    const [recipient, setRecipient] = useState('bbb');
-    async function registerTransaction() {
-        const response = await fetch(
-            `http://${serverIPAddress}:27017/api/transactionRegister`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    date,
-                    sender,
-                    amount,
-                    recipient,
-                }),
-            }
-        );
-        const data = await response.json();
-        console.log(data);
-
-        if (data.status === 'ok') {
-            console.log('created transaction log');
-        }
-    }
     async function updateBalance(event) {
         if (isNaN(parseFloat(tempBalance))) {
             setTempBalance('0');
@@ -337,15 +310,6 @@ export const Quote = (props) => {
                     );
                 }}
             />
-            <form
-                onSubmit={() => {
-                    registerTransaction();
-                }}>
-                <input
-                    type="submit"
-                    value="Register Transaction"
-                />
-            </form>
         </>
     );
 };

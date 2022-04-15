@@ -247,8 +247,12 @@ app.post('/api/transactionRegister', async (req, res) => {
             sender: req.body.sender,
             amount: req.body.amount,
             recipient: req.body.recipient,
+            success: req.body.success,
         });
-        res.json({ status: 'ok' });
+        res.json({
+            status: 'ok',
+            message: 'Created transaction log',
+        });
     } catch (err) {
         res.json({
             status: 'Something went wrong!',
