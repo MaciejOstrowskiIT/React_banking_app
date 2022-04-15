@@ -6,6 +6,6 @@ TODO list:
 -   CSS with responsive design
 -   NEW layout (just for a good view to user)
 -   Server Cookies - to authorise users more safely
--   Transaction history
--   Last login
+-   Transaction history (almost done)
+-   Last login (almost done)
 -   ... and few more ;)
