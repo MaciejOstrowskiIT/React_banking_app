@@ -11,7 +11,6 @@ import { Quote } from './routes/Quote';
 // import ProtectedRoutes from './ProtectedRoutes';
 import Login from './routes/Login';
 import Register from './routes/Register';
-import { UserContextProvider } from './context/UserContextProvider';
 import { Landing } from './routes/Landing';
 import { Transfers } from './routes/Transfers';
 import { Cards } from './routes/Cards';

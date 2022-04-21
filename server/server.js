@@ -260,3 +260,27 @@ app.post('/api/transactionRegister', async (req, res) => {
         });
     }
 });
+
+app.get('/api/userdata', async (req, res) => {
+    const token = req.headers['x-access-token'];
+
+    try {
+        const decoded = jsonwebtoken.verify(
+            token,
+            'secret123'
+        );
+        const email = decoded.email;
+        const user = await User.findOne({ email: email });
+
+        return res.json({
+            status: 'ok',
+            email: user.email,
+        });
+    } catch (error) {
+        console.log(error);
+        res.json({
+            status: 'error',
+            error: 'invalid token',
+        });
+    }
+});

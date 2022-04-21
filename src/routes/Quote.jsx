@@ -87,7 +87,7 @@ export const Quote = (props) => {
         const data = await response.json();
         let dataString = JSON.stringify(data).slice(1, 14);
 
-        if (dataString == '"status":"ok"') {
+        if (dataString === '"status":"ok"') {
             setResultUsername(data.user);
             console.log(resultUsername);
             console.log('OK');
