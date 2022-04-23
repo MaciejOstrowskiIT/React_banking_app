@@ -274,7 +274,12 @@ app.get('/api/userdata', async (req, res) => {
 
         return res.json({
             status: 'ok',
+            name: user.name,
             email: user.email,
+            quote: user.quote,
+            balance: user.balance,
+            currency: user.currency,
+            lastLogin: user.lastLogin,
         });
     } catch (error) {
         console.log(error);
