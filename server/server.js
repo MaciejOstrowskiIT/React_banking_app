@@ -42,7 +42,8 @@ app.post('/api/register', async (req, res) => {
             10
         );
         await User.create({
-            name: req.body.name,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             password: newPassword,
         });
@@ -274,7 +275,8 @@ app.get('/api/userdata', async (req, res) => {
 
         return res.json({
             status: 'ok',
-            name: user.name,
+            firstName: user.firstName,
+            lastName: user.lastName,
             email: user.email,
             quote: user.quote,
             balance: user.balance,

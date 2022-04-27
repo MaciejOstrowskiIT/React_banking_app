@@ -4,7 +4,8 @@ import React from 'react';
 function Register() {
     const serverIPAddress = '192.168.1.9';
 
-    const [name, setName] = useState('');
+    const [firstName, setFisrtName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
@@ -18,7 +19,8 @@ function Register() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    name,
+                    firstName,
+                    lastName,
                     email,
                     password,
                 }),
@@ -28,7 +30,9 @@ function Register() {
         console.log(data);
 
         if (data.status === 'ok') {
-            window.location.href = '/login';
+            // window.location.href = '/login';
+            alert('User created');
+            window.location.reload();
         }
     }
     return (
@@ -39,9 +43,18 @@ function Register() {
                 <input
                     type="text"
                     placeholder="Imię"
-                    value={name}
+                    value={firstName}
                     onChange={(e) =>
-                        setName(e.target.value)
+                        setFisrtName(e.target.value)
+                    }
+                />
+                <label>Nazwisko</label>
+                <input
+                    type="text"
+                    placeholder="Nazwisko"
+                    value={lastName}
+                    onChange={(e) =>
+                        setLastName(e.target.value)
                     }
                 />
                 <label>Hasło</label>

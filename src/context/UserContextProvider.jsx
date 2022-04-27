@@ -4,13 +4,19 @@ import { Menu } from '../routes/Menu';
 
 export const UserContext = createContext({
     contextUsername: '',
+    contextUserLastname: '',
     contextBalance: '',
     contextIsLoggedIn: false,
     contextCurrency: 'PLN',
+    contextQuote: '',
+    contextLastLogin: '',
     setContextIsLoggedIn: () => {},
     setContextBalance: () => {},
     setContextUsername: () => {},
+    setContextUserLastname: () => {},
     setContextCurrency: () => {},
+    setContextQuote: () => {},
+    setContextLastLogin: () => {},
 });
 
 export const UserContextProvider = (props) => {
@@ -20,7 +26,12 @@ export const UserContextProvider = (props) => {
         useState('');
     const [contextUsername, setContextUsername] =
         useState('');
+    const [contextUserLastname, setContextUserLastname] =
+        useState('');
     const [contextCurrency, setContextCurrency] =
+        useState('');
+    const [contextQuote, setContextQuote] = useState('');
+    const [contextLastLogin, setContextLastLogin] =
         useState('');
 
     const clearContext = () => {
@@ -28,6 +39,9 @@ export const UserContextProvider = (props) => {
         setContextBalance('');
         setContextUsername('');
         setContextCurrency('');
+        setContextUserLastname('');
+        setContextQuote('');
+        setContextLastLogin('');
     };
 
     return (
@@ -37,10 +51,16 @@ export const UserContextProvider = (props) => {
                 contextBalance,
                 contextIsLoggedIn,
                 contextCurrency,
+                contextUserLastname,
+                contextQuote,
+                contextLastLogin,
                 setContextIsLoggedIn,
                 setContextBalance,
                 setContextUsername,
                 setContextCurrency,
+                setContextUserLastname,
+                setContextQuote,
+                setContextLastLogin,
             }}>
             {props.children}
             <Menu />
