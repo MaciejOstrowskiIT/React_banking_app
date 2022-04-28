@@ -5,33 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContextProvider';
 
 export const Quote = (props) => {
+    const userContextValue = useContext(UserContext);
+
     const serverIPAddress = '192.168.1.9';
 
-    const [resultUsername, setResultUsername] =
-        useState('');
-    const [
-        searchedUsernameInput,
-        setSearchedUsernameInput,
-    ] = useState('222@222');
-    const [username, setUsername] = useState('');
     const [quote, setQuote] = useState('');
     const [tempQuote, setTempQuote] = useState('');
-    const [balance, setBalance] = useState('');
-    const [tempBalance, setTempBalance] = useState('0');
-    const [currency, setCurrency] = useState('');
-    const [tempEmail, setTempEmail] = useState('');
-    const [tempTransferAmount, setTempTransferAmount] =
-        useState('');
     let navigate = useNavigate();
-
-    const {
-        setContextIsLoggedIn,
-        setContextBalance,
-        setContextUsername,
-        setContextCurrency,
-    } = useContext(UserContext);
-
-    const handleLogin = () => setContextIsLoggedIn(true);
 
     async function populateQuote() {
         const req = await fetch(
@@ -49,74 +29,6 @@ export const Quote = (props) => {
         } else {
             console.log('data error');
         }
-        console.log(data);
-    }
-
-    async function populateUsername() {
-        const req = await fetch(
-            `http://${serverIPAddress}:27017/api/username`,
-            {
-                headers: {
-                    'x-access-token':
-                        localStorage.getItem('token'),
-                },
-            }
-        );
-        const data = await req.json();
-        if (data.status === 'ok') {
-            setUsername(data.name);
-            setContextUsername(data.name);
-        } else {
-            console.log('data error');
-        }
-        console.log(data);
-    }
-    async function searchUser() {
-        const response = await fetch(
-            `http://${serverIPAddress}:27017/api/searchUser`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    searchedUsernameInput,
-                }),
-            }
-        );
-        const data = await response.json();
-        let dataString = JSON.stringify(data).slice(1, 14);
-
-        if (dataString === '"status":"ok"') {
-            setResultUsername(data.user);
-            console.log(resultUsername);
-            console.log('OK');
-        } else {
-            console.log('NOT OK');
-        }
-        console.log(data);
-    }
-
-    async function populateBalance() {
-        const req = await fetch(
-            `http://${serverIPAddress}:27017/api/balance`,
-            {
-                headers: {
-                    'x-access-token':
-                        localStorage.getItem('token'),
-                },
-            }
-        );
-        const data = await req.json();
-        if (data.status === 'ok') {
-            setBalance(data.balance);
-            setCurrency(data.currency);
-            setContextBalance(data.balance);
-            setContextCurrency(data.currency);
-        } else {
-            console.log('data error');
-        }
-        console.log(data);
     }
 
     useEffect(() => {
@@ -124,15 +36,11 @@ export const Quote = (props) => {
 
         if (token) {
             const user = jsonwebtoken.decode(token);
-            console.log(user);
             if (!user) {
                 localStorage.removeItem('token');
                 navigate('/login');
             } else {
                 populateQuote();
-                populateBalance();
-                populateUsername();
-                handleLogin();
             }
         } else {
             navigate('/login');
@@ -163,75 +71,6 @@ export const Quote = (props) => {
             console.log('data error');
             navigate('/login');
         }
-        console.log(data);
-    }
-
-    async function updateBalance(event) {
-        if (isNaN(parseFloat(tempBalance))) {
-            setTempBalance('0');
-        } else {
-            event.preventDefault();
-            const req = await fetch(
-                `http://${serverIPAddress}:27017/api/balance`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-access-token':
-                            localStorage.getItem('token'),
-                    },
-                    body: JSON.stringify({
-                        balance: tempBalance,
-                    }),
-                }
-            );
-            const data = await req.json();
-            if (data.status === 'ok') {
-                setBalance(tempBalance);
-                setTempBalance('');
-            } else {
-                console.log('data error');
-                navigate('/login');
-            }
-            console.log(data);
-        }
-    }
-
-    async function updateTransfer(event) {
-        if (tempTransferAmount > balance) {
-            alert('Zbyt niski stan konta');
-        } else {
-            event.preventDefault();
-            const req = await fetch(
-                `http://${serverIPAddress}:27017/api/balance`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-access-token':
-                            localStorage.getItem('token'),
-                    },
-                    body: JSON.stringify({
-                        balance:
-                            parseFloat(balance) -
-                            parseFloat(tempTransferAmount),
-                    }),
-                }
-            );
-            const data = await req.json();
-            if (data.status === 'ok') {
-                setBalance(
-                    parseFloat(balance) -
-                        parseFloat(tempTransferAmount)
-                );
-                alert('ok');
-                setTempTransferAmount('');
-            } else {
-                console.log('data error');
-                navigate('/login');
-            }
-            console.log(data);
-        }
     }
 
     return (
@@ -253,63 +92,11 @@ export const Quote = (props) => {
             </form>
             <h2>
                 Stan konta:{' '}
-                {parseFloat(balance).toFixed(2) +
-                    ' ' +
-                    currency}
+                {parseFloat(
+                    userContextValue.contextBalance
+                ).toFixed(2)}{' '}
+                {userContextValue.contextCurrency}
             </h2>
-            <label>Kwota</label>
-            <form onSubmit={updateBalance}>
-                <input
-                    defaultValue={0}
-                    type="text"
-                    placeholder="Kwota"
-                    value={tempBalance}
-                    onChange={(e) =>
-                        setTempBalance(e.target.value)
-                    }
-                />
-                <input
-                    type="submit"
-                    value="Ustaw stan konta"
-                />
-            </form>
-            <h2>Wykonaj przelew</h2>
-            <label>Kwota</label>
-            <form onSubmit={updateTransfer}>
-                <input
-                    type="text"
-                    placeholder="Kwota"
-                    value={tempTransferAmount}
-                    onChange={(e) =>
-                        setTempTransferAmount(
-                            e.target.value
-                        )
-                    }
-                />
-                <label>Adres e-mail odbiorcy</label>
-                <input
-                    type="email"
-                    placeholder="Adres e-mail odbiorcy"
-                    value={tempEmail}
-                    onChange={(e) =>
-                        setTempEmail(e.target.value)
-                    }
-                />
-                <input type="submit" value="Przelej" />
-            </form>
-            <input
-                type="submit"
-                onClick={() => searchUser()}
-                value="SearchUsertest"
-            />
-            <input
-                type="text"
-                onChange={(e) => {
-                    setSearchedUsernameInput(
-                        e.target.value
-                    );
-                }}
-            />
         </>
     );
 };
