@@ -25,7 +25,8 @@ app.listen(port, () => {
 });
 
 const uri =
-    'mongodb+srv://mern:mongodb@cluster0.f3hxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+    'mongodb+srv://mern:mongodb@cytrynowysorbet.udove.mongodb.net/test';
+// 'mongodb+srv://mern:mongodb@cluster0.f3hxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 mongoose.connect(uri);
 // mongoose.connect('mongodb://localhost:27017/mern')
