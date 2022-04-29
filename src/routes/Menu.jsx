@@ -80,7 +80,9 @@ export const Menu = () => {
         <>
             <div>
                 <header className="just-header">
-                    <h1>React Banking App</h1>
+                    <h1 className="app-name-header">
+                        React Banking App
+                    </h1>
                     <p className="logged-as-paragraph">
                         {userContextValue.contextIsLoggedIn
                             ? `Zalogowano jako: ${userContextValue.contextUsername}`

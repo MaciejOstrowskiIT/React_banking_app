@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
     const serverIPAddress = '192.168.1.9';
+
+    let navigate = useNavigate();
 
     const [firstName, setFisrtName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -32,7 +35,7 @@ function Register() {
         if (data.status === 'ok') {
             // window.location.href = '/login';
             alert('User created');
-            window.location.reload();
+            navigate('/login');
         }
     }
     return (

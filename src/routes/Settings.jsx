@@ -27,6 +27,10 @@ export const Settings = () => {
         document.body.style.backgroundColor =
             settingsContextValue.lightTheme.background;
         settingsContextValue.setSettingsTheme('light');
+        let element = document.querySelector('.navbar');
+        element.classList.contains('dark')
+            ? element.classList.replace('dark', 'light')
+            : element.classList.add('light');
     };
     const changeThemeToDark = () => {
         document.body.style.color =
@@ -34,6 +38,10 @@ export const Settings = () => {
         document.body.style.backgroundColor =
             settingsContextValue.darkTheme.background;
         settingsContextValue.setSettingsTheme('dark');
+        let element = document.querySelector('.navbar');
+        element.classList.contains('light')
+            ? element.classList.replace('light', 'dark')
+            : element.classList.add('dark');
     };
 
     return (

@@ -18,6 +18,20 @@
     margin-right: 0px;
 }
 
+a:visited{
+    text-decoration: none;
+    color:none;
+}
+
+.light:visited{
+    color: #000000;
+}
+
+.dark:visited{
+color: #eeeeee;
+}
+
+
 .active-link {
     color: red;
 }
@@ -28,17 +42,27 @@
 }
 .logged-as-paragraph {
     position: absolute;
-    right: 40px;
+    right: 4px;
 }
 @media (max-width: 768px) {
     .navbar {
         padding: 0px !important;
         flex-direction: column;
+
     }
     .navbar > a {
         margin: 0 0 5px 0;
         float: none;
         display: block;
         text-align: center;
+
+        padding: 5px;
     }
+
+    .logged-as-paragraph {
+        position: fixed;
+        right: 4px;
+        bottom: 5px;
+    }
+
 }
