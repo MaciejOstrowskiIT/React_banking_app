@@ -1,19 +1,8 @@
 import jsonwebtoken from 'jsonwebtoken';
-import React, {
-    useContext,
-    useEffect,
-    useState,
-} from 'react';
-import InstagramEmbed from 'react-instagram-embed';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../context/UserContextProvider';
-
 export const Transfers = () => {
     const serverIPAddress = '192.168.1.9';
-    const [transferAmount, setTransferAmount] =
-        useState('');
-    const [targerUserEmail, setTargetUserEmail] =
-        useState('');
     let date = Date.now();
     const [sender, setSender] = useState('');
     const [amount, setAmount] = useState(1);

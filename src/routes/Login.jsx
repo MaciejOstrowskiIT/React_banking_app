@@ -29,11 +29,12 @@ function Login() {
         const data = await response.json();
         let dataString = JSON.stringify(data).slice(1, 14);
 
-        if (dataString == '"status":"ok"') {
+        if (dataString === '"status":"ok"') {
             localStorage.setItem('token', data.user);
             setIsLogged(!isLogged);
             navigate('/main');
             alert('Logged in');
+            window.location.reload();
         } else {
             alert('Not logged in');
         }
