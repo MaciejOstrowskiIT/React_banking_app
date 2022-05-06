@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './styles/login.css';
 
 function Register() {
     const serverIPAddress = '192.168.1.9';
@@ -39,9 +40,18 @@ function Register() {
         }
     }
     return (
-        <div>
+        <div className="login">
             <h1>Zarejestruj się</h1>
+            <label>Email</label>
             <form onSubmit={registerUser}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) =>
+                        setEmail(e.target.value)
+                    }
+                />
                 <label>Imię</label>
                 <input
                     type="text"
@@ -69,15 +79,7 @@ function Register() {
                         setPassword(e.target.value)
                     }
                 />
-                <label>Email</label>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) =>
-                        setEmail(e.target.value)
-                    }
-                />
+
                 <input type="submit" value="Register" />
             </form>
         </div>
