@@ -1,6 +1,7 @@
 .navbar {
     display: flex;
     justify-content: center;
+    align-items: center;
     padding-bottom: 0px !important;
     font-size: large;
 }
@@ -9,18 +10,16 @@
     margin-right: 40px;
     margin-bottom: 5px;
     text-decoration: none;
+    color: black;
 }
-.navbar > a:hover {
-    cursor: pointer;
-    color: rgb(44, 40, 255);
-}
+
 .navbar > a:last-child {
     margin-right: 0px;
 }
 
 a:visited{
     text-decoration: none;
-    color:none;
+    color:inherit;
 }
 
 .light:visited{
@@ -31,6 +30,10 @@ a:visited{
 color: #eeeeee;
 }
 
+.navbar > a:hover {
+    cursor: pointer;
+    color: rgb(44, 40, 255);
+}
 
 .active-link {
     color: red;
