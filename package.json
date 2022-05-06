@@ -43,5 +43,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Banking app created during CODE:ME course using MERN stack\r (Mongodb, Express.js, React.js, Node.js)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaciejOstrowskiIT/React_banking_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaciejOstrowskiIT/React_banking_app/issues"
+  },
+  "homepage": "https://github.com/MaciejOstrowskiIT/React_banking_app#readme"
 }
