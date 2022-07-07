@@ -25,6 +25,7 @@ const User = new mongoose.Schema(
     },
     {
         collection: 'user-data',
+        timestamps: true,
     }
 );
 
