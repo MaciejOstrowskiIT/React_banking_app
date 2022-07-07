@@ -1,4 +1,8 @@
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react)
+[![React Version](https://img.shields.io/badge/React.js-18.2.0-brightgreen)](https://reactjs.org/)
+[![Node Verion](https://img.shields.io/badge/Node.js-16.15.1-brightgreen)](https://nodejs.org/en/)
+[![Express Verion](https://img.shields.io/badge/Express.js-4.x-brightgreen)](https://expressjs.com/)
+[![Mongodb Verion](https://img.shields.io/badge/Mongodb-5.3-brightgreen)](https://www.mongodb.com/docs/manual/introduction/)
+
 
 Banking app created during CODE:ME course using MERN stack
 (Mongodb, Express.js, React.js, Node.js)
