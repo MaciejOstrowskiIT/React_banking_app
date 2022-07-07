@@ -9,3 +9,8 @@ TODO list:
 -   Transaction history (almost done)
 -   Last login (almost done)
 -   ... and few more ;)
+
+
+The main tech stack is called "MERN". This stands for Mongo, Express, React, Node. There's a middleware written in express.js - a simple REST API. I am using it to authorize users and also collect all their data. 
+React with react-router provides a single-page user experience. It has minimalistic CSS and HTML. 
+The database which I am using is free and non-relative MongoDB with an external cloud cluster.
