@@ -135,6 +135,31 @@ app.post('/api/quote', async (req, res) => {
         });
     }
 });
+app.post('/api/setLastLogin', async (req, res) => {
+    const token = req.headers['x-access-token'];
+
+    try {
+        const decoded = jsonwebtoken.verify(
+            token,
+            'secret123'
+        );
+        const email = decoded.email;
+        const user = await User.updateOne(
+            { email: email },
+            { $set: { lastLogin: req.body.lastLogin } }
+        );
+        return res.json({
+            status: 'ok',
+            quote: user.lastLogin,
+        });
+    } catch (error) {
+        console.log(error);
+        res.json({
+            status: 'error',
+            error: 'invalid token',
+        });
+    }
+});
 app.get('/api/balance', async (req, res) => {
     const token = req.headers['x-access-token'];
 

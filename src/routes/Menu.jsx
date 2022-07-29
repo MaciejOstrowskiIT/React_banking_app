@@ -29,6 +29,26 @@ export const Menu = () => {
 
     const handleLogin = () => setContextIsLoggedIn(true);
 
+    async function updateLastLogin() {
+        const req = await fetch(
+            `http://${middlewareServerIPAddress}:${middlewareServerPort}/api/setLastLogin`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token':
+                        localStorage.getItem('token'),
+                },
+                body: JSON.stringify({
+                    lastLogin: Date.now(),
+                }),
+            }
+        );
+        const data = await req.json();
+        if (data.status === 'ok') {
+            console.log('Last Login updated successfully');
+        } else console.log('data error');
+    }
     async function updateContextFromDB() {
         const req = await fetch(
             `http://${middlewareServerIPAddress}:${middlewareServerPort}/api/userdata`,
@@ -67,6 +87,7 @@ export const Menu = () => {
             } else {
                 updateContextFromDB();
                 handleLogin();
+                updateLastLogin();
             }
         }
     }, []);
