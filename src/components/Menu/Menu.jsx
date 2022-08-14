@@ -4,12 +4,12 @@ import {
     Outlet,
     useNavigate,
 } from 'react-router-dom';
-import './styles/menu.css';
+import jsonwebtoken from 'jsonwebtoken';
+import './menu.css';
 import {
     UserContext,
     UserContextProvider,
-} from '../context/UserContextProvider';
-import jsonwebtoken from 'jsonwebtoken';
+} from '../../context/UserContextProvider';
 
 export const Menu = () => {
     const middlewareServerIPAddress = '192.168.1.9';

@@ -5,9 +5,9 @@ import {
     Outlet,
     useNavigate,
 } from 'react-router-dom';
-import './styles/cards.css';
+import './creditcards.css';
 
-export const Cards = () => {
+export const CreditCards = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const token = localStorage.getItem('token');

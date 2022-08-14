@@ -1,7 +1,7 @@
 import jsonwebtoken from 'jsonwebtoken';
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SettingsContext } from '../context/SettingsContextProvider';
+import { SettingsContext } from '../../context/SettingsContextProvider';
 
 export const Settings = () => {
     const navigate = useNavigate();

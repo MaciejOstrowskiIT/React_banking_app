@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './styles/login.css';
+import './register.css';
 
 function Register() {
     const serverIPAddress = '192.168.1.9';

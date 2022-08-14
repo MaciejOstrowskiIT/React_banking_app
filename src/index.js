@@ -7,16 +7,16 @@ import {
     Route,
     Routes,
 } from 'react-router-dom';
-import { Quote } from './routes/Quote';
+import { Quote } from './components/Quote/Quote';
 // import ProtectedRoutes from './ProtectedRoutes';
-import Login from './routes/Login';
-import Register from './routes/Register';
-import { Landing } from './routes/Landing';
-import { Transfers } from './routes/Transfers';
-import { Cards } from './routes/Cards';
-import { Help } from './routes/Help';
-import { Settings } from './routes/Settings';
-import { UserProducts } from './routes/UserProducts';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import { Landing } from './components/Landing/Landing';
+import { Transfers } from './components/Transfers/Transfers';
+import { CreditCards } from './components/CreditCards/CreditCards';
+import { Help } from './components/Help/Help';
+import { Settings } from './components/Settings/Settings';
+import { UserProducts } from './components/UserProducts/UserProducts';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -35,7 +35,9 @@ ReactDOM.render(
                     <Route
                         path="help"
                         element={<Help />}></Route>
-                    <Route path="cards" element={<Cards />}>
+                    <Route
+                        path="cards"
+                        element={<CreditCards />}>
                         <Route
                             path="user-products"
                             element={

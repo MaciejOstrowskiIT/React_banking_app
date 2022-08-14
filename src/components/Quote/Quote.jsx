@@ -2,7 +2,7 @@ import jsonwebtoken from 'jsonwebtoken';
 import { useContext, useEffect, useState } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../context/UserContextProvider';
+import { UserContext } from '../../context/UserContextProvider';
 
 export const Quote = (props) => {
     const userContextValue = useContext(UserContext);

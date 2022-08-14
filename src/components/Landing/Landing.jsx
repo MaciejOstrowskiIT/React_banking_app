@@ -1,7 +1,7 @@
 import jsonwebtoken from 'jsonwebtoken';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './styles/landing.css';
+import './landing.css';
 
 export const Landing = () => {
     const navigate = useNavigate();
