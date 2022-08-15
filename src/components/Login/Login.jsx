@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 
-function Login() {
+const Login = () => {
     let navigate = useNavigate();
     const serverIPAddress = '192.168.1.9';
 
@@ -67,6 +66,6 @@ function Login() {
             </form>
         </div>
     );
-}
+};
 
 export default Login;

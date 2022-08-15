@@ -2,6 +2,7 @@ import React from 'react';
 import { SettingsContextProvider } from './context/SettingsContextProvider';
 // import './App.css';
 import { UserContextProvider } from './context/UserContextProvider';
+require('dotenv').config();
 
 function App() {
     return (

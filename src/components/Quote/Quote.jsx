@@ -1,13 +1,22 @@
 import jsonwebtoken from 'jsonwebtoken';
-import { useContext, useEffect, useState } from 'react';
-import React from 'react';
+import React, {
+    useContext,
+    useEffect,
+    useState,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContextProvider';
 
 export const Quote = (props) => {
     const userContextValue = useContext(UserContext);
 
-    const serverIPAddress = '192.168.1.9';
+    const serverIPAddress =
+        process.env
+            .REACT_APP_MIDDLEWARE_SERVER_IP_ADDRESS ||
+        '192.168.1.9';
+    const serverPort =
+        process.env.REACT_APP_MIDDLEWARE_SERVER_PORT ||
+        '192.168.1.9';
 
     const [quote, setQuote] = useState('');
     const [tempQuote, setTempQuote] = useState('');
@@ -15,7 +24,7 @@ export const Quote = (props) => {
 
     async function populateQuote() {
         const req = await fetch(
-            `http://${serverIPAddress}:27017/api/quote`,
+            `http://${serverIPAddress}:${serverPort}/api/quote`,
             {
                 headers: {
                     'x-access-token':
@@ -50,7 +59,7 @@ export const Quote = (props) => {
     async function updateQuote(event) {
         event.preventDefault();
         const req = await fetch(
-            `http://${serverIPAddress}:27017/api/quote`,
+            `http://${serverIPAddress}:${serverPort}/api/quote`,
             {
                 method: 'POST',
                 headers: {
