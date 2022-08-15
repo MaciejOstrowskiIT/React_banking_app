@@ -2,7 +2,13 @@ import jsonwebtoken from 'jsonwebtoken';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 export const Transfers = () => {
-    const serverIPAddress = '192.168.1.9';
+    const middlewareServerIPAddress =
+        process.env
+            .REACT_APP_MIDDLEWARE_SERVER_IP_ADDRESS ||
+        '192.168.1.9';
+    const middlewareServerPort =
+        process.env.REACT_APP_MIDDLEWARE_SERVER_PORT ||
+        '192.168.1.9';
     let date = Date.now();
     const [sender, setSender] = useState('');
     const [amount, setAmount] = useState(1);
@@ -26,7 +32,7 @@ export const Transfers = () => {
     async function registerTransaction(e) {
         e.preventDefault();
         const response = await fetch(
-            `http://${serverIPAddress}:27017/api/transactionRegister`,
+            `http://${middlewareServerIPAddress}:${middlewareServerPort}}/api/transactionRegister`,
             {
                 method: 'POST',
                 headers: {

@@ -4,7 +4,13 @@ import './login.css';
 
 const Login = () => {
     let navigate = useNavigate();
-    const serverIPAddress = '192.168.1.9';
+    const middlewareServerIPAddress =
+        process.env
+            .REACT_APP_MIDDLEWARE_SERVER_IP_ADDRESS ||
+        '192.168.1.9';
+    const middlewareServerPort =
+        process.env.REACT_APP_MIDDLEWARE_SERVER_PORT ||
+        '192.168.1.9';
 
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -13,7 +19,7 @@ const Login = () => {
     async function loginUser(event) {
         event.preventDefault();
         const response = await fetch(
-            `http://${serverIPAddress}:27017/api/login`,
+            `http://${middlewareServerIPAddress}:${middlewareServerPort}/api/login`,
             {
                 method: 'POST',
                 headers: {

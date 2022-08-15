@@ -4,7 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import './register.css';
 
 function Register() {
-    const serverIPAddress = '192.168.1.9';
+    const middlewareServerIPAddress =
+        process.env
+            .REACT_APP_MIDDLEWARE_SERVER_IP_ADDRESS ||
+        '192.168.1.9';
+    const middlewareServerPort =
+        process.env.REACT_APP_MIDDLEWARE_SERVER_PORT ||
+        '192.168.1.9';
 
     let navigate = useNavigate();
 
@@ -16,7 +22,7 @@ function Register() {
     async function registerUser(event) {
         event.preventDefault();
         const response = await fetch(
-            `http://${serverIPAddress}:27017/api/register`,
+            `http://${middlewareServerIPAddress}:${middlewareServerPort}/api/register`,
             {
                 method: 'POST',
                 headers: {

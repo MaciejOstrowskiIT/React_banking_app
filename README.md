@@ -6,15 +6,6 @@
 Banking app created during CODE:ME course using MERN stack
 (Mongodb, Express.js, React.js, Node.js)
 
-TODO list:
-
--   CSS with responsive design
--   NEW layout (just for a good view to user)
--   Server Cookies - to authorise users more safely
--   Transaction history (almost done)
--   Last login (almost done)
--   ... and few more ;)
-
 The main tech stack is called "MERN". This stands for Mongo,
 Express, React, Node. There's a middleware written in
 express.js - a simple REST API. I am using it to authorize
@@ -23,3 +14,21 @@ react-router provides a single-page user experience. It has
 minimalistic CSS and HTML. The database which I am using is
 free and non-relative MongoDB with an external cloud
 cluster.
+
+Features:
+
+-   REST Api
+-   React router
+-   React Hooks
+    -   State
+    -   Context
+    -   Effect
+    -   Cusotm
+-   Cloud and non-relative Database (Mongo)
+-   Responsive Web Design
+
+The user can create his own account which is stored in the
+database. After logging in, it is possible to check the
+account balance and send a transfer for a specific user and
+credit card management. Personalization settings contains
+theme changer - "dark" or "light".

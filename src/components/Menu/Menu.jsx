@@ -13,8 +13,13 @@ import {
 import { updateLastLogin } from '../../api/updateLastLogin';
 
 export const Menu = () => {
-    const middlewareServerIPAddress = '192.168.1.9';
-    const middlewareServerPort = '27017';
+    const middlewareServerIPAddress =
+        process.env
+            .REACT_APP_MIDDLEWARE_SERVER_IP_ADDRESS ||
+        '192.168.1.9';
+    const middlewareServerPort =
+        process.env.REACT_APP_MIDDLEWARE_SERVER_PORT ||
+        '192.168.1.9';
 
     let navigate = useNavigate();
 
