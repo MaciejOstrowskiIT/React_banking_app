@@ -288,6 +288,39 @@ app.post('/api/transactionRegister', async (req, res) => {
     }
 });
 
+app.post('/api/setThemeSettings', async (req, res) => {
+    const token = req.headers['x-access-token'];
+
+    try {
+        const decoded = jsonwebtoken.verify(
+            token,
+            'secret123'
+        );
+        const email = decoded.email;
+        const user = await User.updateOne(
+            { email: email },
+            {
+                $set: {
+                    settings: {
+                        // theme: req.body.themeSettings,
+                        theme: req.body.themeSettings,
+                    },
+                },
+            }
+        );
+        return res.json({
+            status: 'ok',
+            callback: user.themeSettings,
+        });
+    } catch (error) {
+        console.log(error);
+        res.json({
+            status: 'error',
+            error: 'invalid token',
+        });
+    }
+});
+
 app.get('/api/userdata', async (req, res) => {
     const token = req.headers['x-access-token'];
 

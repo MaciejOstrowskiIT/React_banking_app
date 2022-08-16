@@ -2,6 +2,8 @@ import jsonwebtoken from 'jsonwebtoken';
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SettingsContext } from '../../context/SettingsContextProvider';
+import '../../api/setPersonalSettings';
+import { setPersonalSettings } from '../../api/setPersonalSettings';
 
 export const Settings = () => {
     const navigate = useNavigate();
@@ -59,6 +61,12 @@ export const Settings = () => {
                         changeThemeToLight();
                     }}>
                     Light
+                </button>
+                <button
+                    onClick={() => {
+                        setPersonalSettings();
+                    }}>
+                    TEST
                 </button>
             </div>
         </>

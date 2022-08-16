@@ -32,3 +32,5 @@ database. After logging in, it is possible to check the
 account balance and send a transfer for a specific user and
 credit card management. Personalization settings contains
 theme changer - "dark" or "light".
+
+HOW TO INSTALL:

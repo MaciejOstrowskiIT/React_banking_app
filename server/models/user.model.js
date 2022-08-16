@@ -22,6 +22,13 @@ const User = new mongoose.Schema(
             default: 'PLN',
         },
         lastLogin: { type: Date, default: Date.now },
+        settings: {
+            theme: {
+                type: String,
+                required: true,
+                default: 'light',
+            },
+        },
     },
     {
         collection: 'user-data',
