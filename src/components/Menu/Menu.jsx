@@ -11,6 +11,7 @@ import {
     UserContextProvider,
 } from '../../context/UserContextProvider';
 import { updateLastLogin } from '../../api/updateLastLogin';
+import { getThemeSettings } from '../../api/getThemeSettings';
 
 export const Menu = () => {
     const middlewareServerIPAddress =
@@ -31,30 +32,10 @@ export const Menu = () => {
         setContextCurrency,
         setContextQuote,
         setContextLastLogin,
+        setContextTheme,
     } = useContext(UserContext);
 
     const handleLogin = () => setContextIsLoggedIn(true);
-
-    // async function updateLastLogin() {
-    //     const req = await fetch(
-    //         `http://${middlewareServerIPAddress}:${middlewareServerPort}/api/setLastLogin`,
-    //         {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'x-access-token':
-    //                     localStorage.getItem('token'),
-    //             },
-    //             body: JSON.stringify({
-    //                 lastLogin: Date.now(),
-    //             }),
-    //         }
-    //     );
-    //     const data = await req.json();
-    //     if (data.status === 'ok') {
-    //         console.log('Last Login updated successfully');
-    //     } else console.log('data error');
-    // }
 
     async function updateContextFromDB() {
         const req = await fetch(
@@ -77,6 +58,7 @@ export const Menu = () => {
             setContextCurrency(data.currency);
             setContextQuote(data.quote);
             setContextLastLogin(data.lastLogin);
+            setContextTheme(data.theme);
         } else {
             console.log('Data error');
         }
@@ -95,6 +77,9 @@ export const Menu = () => {
                 updateContextFromDB();
                 handleLogin();
                 updateLastLogin();
+                // setContextTheme(getThemeSettings());
+                // const value = getThemeSettings();
+                // console.log('value: ', getThemeSettings());
             }
         }
     }, []);

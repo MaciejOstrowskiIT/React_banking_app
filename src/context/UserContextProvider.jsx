@@ -10,6 +10,7 @@ export const UserContext = createContext({
     contextCurrency: 'PLN',
     contextQuote: '',
     contextLastLogin: '',
+    contextTheme: '',
     setContextIsLoggedIn: () => {},
     setContextBalance: () => {},
     setContextUsername: () => {},
@@ -17,6 +18,7 @@ export const UserContext = createContext({
     setContextCurrency: () => {},
     setContextQuote: () => {},
     setContextLastLogin: () => {},
+    setContextTheme: () => {},
 });
 
 export const UserContextProvider = (props) => {
@@ -33,6 +35,7 @@ export const UserContextProvider = (props) => {
     const [contextQuote, setContextQuote] = useState('');
     const [contextLastLogin, setContextLastLogin] =
         useState('');
+    const [contextTheme, setContextTheme] = useState('');
 
     const clearContext = () => {
         setContextIsLoggedIn(false);
@@ -42,6 +45,7 @@ export const UserContextProvider = (props) => {
         setContextUserLastname('');
         setContextQuote('');
         setContextLastLogin('');
+        setContextTheme('');
     };
 
     return (
@@ -54,6 +58,7 @@ export const UserContextProvider = (props) => {
                 contextUserLastname,
                 contextQuote,
                 contextLastLogin,
+                contextTheme,
                 setContextIsLoggedIn,
                 setContextBalance,
                 setContextUsername,
@@ -61,6 +66,7 @@ export const UserContextProvider = (props) => {
                 setContextUserLastname,
                 setContextQuote,
                 setContextLastLogin,
+                setContextTheme,
             }}>
             {props.children}
             <Menu />

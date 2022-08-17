@@ -4,8 +4,8 @@ import {
     middlewareServerPort,
 } from './apiURLandPORT';
 
-export const setPersonalSettings = (setting = 'dark') => {
-    (async function setSettingsAPI(event) {
+export const setThemeSettings = (setting = 'dark') => {
+    (async function setThemeSettingsAPI(event) {
         const response = await fetch(
             `http://${middlewareServerIPAddress}:${middlewareServerPort}/api/setThemeSettings`,
             {
