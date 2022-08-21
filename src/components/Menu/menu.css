@@ -17,17 +17,17 @@
     margin-right: 0px;
 }
 
-a:visited{
+a:visited {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
 }
 
-.light:visited{
+.light:visited {
     color: #000000;
 }
 
-.dark:visited{
-color: #eeeeee;
+.dark:visited {
+    color: #eeeeee;
 }
 
 .navbar > a:hover {
@@ -35,7 +35,7 @@ color: #eeeeee;
     color: rgb(44, 40, 255);
 }
 
-.active-link {
+.navbar > .active-link {
     color: red;
 }
 .just-header > p,
@@ -51,7 +51,6 @@ color: #eeeeee;
     .navbar {
         padding: 0px !important;
         flex-direction: column;
-
     }
     .navbar > a {
         margin: 0 0 5px 0;
@@ -67,5 +66,4 @@ color: #eeeeee;
         right: 4px;
         bottom: 5px;
     }
-
 }

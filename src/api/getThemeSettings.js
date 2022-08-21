@@ -20,7 +20,4 @@ export const getThemeSettings = async () => {
     data.status === 'ok'
         ? console.log('Theme settings passed', data)
         : console.log('data error');
-
-    // console.log(data.theme);
-    // dataFromAPI = data.theme;
 };
