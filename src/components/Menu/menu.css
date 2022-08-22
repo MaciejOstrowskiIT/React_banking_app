@@ -36,7 +36,7 @@ a:visited {
 }
 
 .navbar > .active-link {
-    color: red;
+    color: rgb(161, 161, 161);
 }
 .just-header > p,
 .just-header > h1 {
