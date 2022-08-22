@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import './menu.css';
-
 import useContextUpdate from '../../hooks/useContextUpdate';
 import { UserContext } from '../../context/UserContextProvider';
 
@@ -114,7 +113,6 @@ export const Menu = () => {
                                         localStorage.removeItem(
                                             'token'
                                         );
-                                        // handleLogout();
                                         context.contextIsLoggedIn = false;
                                     }}>
                                     Wyloguj

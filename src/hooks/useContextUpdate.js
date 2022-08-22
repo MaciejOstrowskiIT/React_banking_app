@@ -1,10 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { updateLastLogin } from '../api/updateLastLogin';
-import {
-    UserContext,
-    UserContextProvider,
-} from '../context/UserContextProvider';
+import { UserContext } from '../context/UserContextProvider';
 
 import jsonwebtoken from 'jsonwebtoken';
 
@@ -75,11 +72,6 @@ const useContextUpdate = (logout) => {
             }
         }
     }, []);
-
-    const handleLogout = () => {
-        UserContextProvider.clearContext();
-        alert('test');
-    };
 
     return [UserContext];
 };
