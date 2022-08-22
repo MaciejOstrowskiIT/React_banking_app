@@ -78,6 +78,7 @@ const useContextUpdate = (logout) => {
 
     const handleLogout = () => {
         UserContextProvider.clearContext();
+        alert('test');
     };
 
     return [UserContext];
