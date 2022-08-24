@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import './menu.css';
 import useContextUpdate from '../../hooks/useContextUpdate';
 import { UserContext } from '../../context/UserContextProvider';
+import Header from '../Header/Header';
 
 export const Menu = () => {
     const [] = useContextUpdate();
@@ -10,12 +11,7 @@ export const Menu = () => {
     return (
         <>
             <div>
-                <header className="just-header">
-                    <h1 className="app-name-header">
-                        React Banking App
-                    </h1>
-                </header>
-
+                <Header />
                 <UserContext.Consumer>
                     {(context) => (
                         <>

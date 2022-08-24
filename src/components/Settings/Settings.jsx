@@ -1,27 +1,12 @@
-import jsonwebtoken from 'jsonwebtoken';
-import React, { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { SettingsContext } from '../../context/SettingsContextProvider';
 import '../../api/setThemeSettings';
 import { setThemeSettings } from '../../api/setThemeSettings';
 import { getThemeSettings } from '../../api/getThemeSettings';
-import useCheckToken from '../../hooks/useCheckToken';
+import CheckToken from '../../hooks/CheckToken';
 
 export const Settings = () => {
-    useCheckToken();
-    // const navigate = useNavigate();
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
-
-    //     if (token) {
-    //         const user = jsonwebtoken.decode(token);
-    //         if (!user) {
-    //             navigate('/login');
-    //         }
-    //     } else {
-    //         navigate('/login');
-    //     }
-    // }, []);
+    CheckToken();
 
     const settingsContextValue =
         useContext(SettingsContext);

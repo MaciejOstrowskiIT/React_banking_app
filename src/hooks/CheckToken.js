@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import jsonwebtoken from 'jsonwebtoken';
 
-const useCheckToken = () => {
+const CheckToken = () => {
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -19,4 +19,4 @@ const useCheckToken = () => {
     }, []);
 };
 
-export default useCheckToken;
+export default CheckToken;
