@@ -1,6 +1,5 @@
-import jsonwebtoken from 'jsonwebtoken';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import CheckToken from '../../hooks/CheckToken';
 export const Transfers = () => {
     const middlewareServerIPAddress =
         process.env
@@ -15,19 +14,7 @@ export const Transfers = () => {
     const [recipient, setRecipient] = useState('');
     const [success, setSuccess] = useState(false);
 
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-
-        if (token) {
-            const user = jsonwebtoken.decode(token);
-            if (!user) {
-                navigate('/login');
-            }
-        } else {
-        }
-    }, []);
+    CheckToken();
 
     async function registerTransaction(e) {
         e.preventDefault();

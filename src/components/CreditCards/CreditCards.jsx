@@ -1,26 +1,10 @@
-import jsonwebtoken from 'jsonwebtoken';
-import React, { useEffect } from 'react';
-import {
-    NavLink,
-    Outlet,
-    useNavigate,
-} from 'react-router-dom';
+import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import CheckToken from '../../hooks/CheckToken';
 import './creditcards.css';
 
 export const CreditCards = () => {
-    const navigate = useNavigate();
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-
-        if (token) {
-            const user = jsonwebtoken.decode(token);
-            if (!user) {
-                navigate('/login');
-            }
-        } else {
-            navigate('/login');
-        }
-    }, []);
+    CheckToken();
 
     return (
         <>
