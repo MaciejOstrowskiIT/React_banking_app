@@ -5,7 +5,7 @@ import { UserContext } from '../context/UserContextProvider';
 
 import jsonwebtoken from 'jsonwebtoken';
 
-const useContextUpdate = (logout) => {
+const useContextUpdate = () => {
     const middlewareServerIPAddress =
         process.env
             .REACT_APP_MIDDLEWARE_SERVER_IP_ADDRESS ||

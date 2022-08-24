@@ -5,21 +5,23 @@ import { SettingsContext } from '../../context/SettingsContextProvider';
 import '../../api/setThemeSettings';
 import { setThemeSettings } from '../../api/setThemeSettings';
 import { getThemeSettings } from '../../api/getThemeSettings';
+import useCheckToken from '../../hooks/useCheckToken';
 
 export const Settings = () => {
-    const navigate = useNavigate();
-    useEffect(() => {
-        const token = localStorage.getItem('token');
+    useCheckToken();
+    // const navigate = useNavigate();
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token');
 
-        if (token) {
-            const user = jsonwebtoken.decode(token);
-            if (!user) {
-                navigate('/login');
-            }
-        } else {
-            navigate('/login');
-        }
-    }, []);
+    //     if (token) {
+    //         const user = jsonwebtoken.decode(token);
+    //         if (!user) {
+    //             navigate('/login');
+    //         }
+    //     } else {
+    //         navigate('/login');
+    //     }
+    // }, []);
 
     const settingsContextValue =
         useContext(SettingsContext);

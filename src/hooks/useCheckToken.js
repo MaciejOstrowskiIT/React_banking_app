@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import jsonwebtoken from 'jsonwebtoken';
 
-const useLogin = () => {
+const useCheckToken = () => {
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -13,10 +14,10 @@ const useLogin = () => {
                 localStorage.removeItem('token');
                 navigate('/login');
             } else {
-                navigate('/main');
+                // navigate('/main');
             }
         }
     }, []);
 };
 
-export default useLogin;
+export default useCheckToken;
