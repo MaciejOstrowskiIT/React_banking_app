@@ -14,7 +14,6 @@ const useCheckToken = () => {
                 localStorage.removeItem('token');
                 navigate('/login');
             } else {
-                // navigate('/main');
             }
         }
     }, []);
