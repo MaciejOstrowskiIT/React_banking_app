@@ -3,7 +3,7 @@ import { SettingsContext } from '../../context/SettingsContextProvider';
 import '../../api/setThemeSettings';
 import { setThemeSettings } from '../../api/setThemeSettings';
 import { getThemeSettings } from '../../api/getThemeSettings';
-import CheckToken from '../../hooks/CheckToken';
+import CheckToken from '../../functions/CheckToken';
 
 export const Settings = () => {
     CheckToken();

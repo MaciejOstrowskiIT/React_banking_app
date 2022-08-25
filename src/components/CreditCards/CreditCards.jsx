@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import CheckToken from '../../hooks/CheckToken';
+import CheckToken from '../../functions/CheckToken';
 import './creditcards.css';
 
 export const CreditCards = () => {

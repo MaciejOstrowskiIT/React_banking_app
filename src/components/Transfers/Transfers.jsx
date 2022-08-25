@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CheckToken from '../../hooks/CheckToken';
+import CheckToken from '../../functions/CheckToken';
 export const Transfers = () => {
     const middlewareServerIPAddress =
         process.env

@@ -6,7 +6,7 @@ import { UserContext } from '../../context/UserContextProvider';
 import Header from '../Header/Header';
 
 export const Menu = () => {
-    const [] = useContextUpdate();
+    useContextUpdate();
 
     return (
         <>

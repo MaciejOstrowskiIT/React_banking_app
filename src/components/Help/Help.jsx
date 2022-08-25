@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CheckToken from '../../hooks/CheckToken';
+import CheckToken from '../../functions/CheckToken';
 
 export const Help = () => {
     CheckToken();

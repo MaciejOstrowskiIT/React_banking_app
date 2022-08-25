@@ -5,9 +5,10 @@ import React, {
     useState,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
+import setQuoteInDB from '../../api/setQuoteInDB';
 import { UserContext } from '../../context/UserContextProvider';
 
-export const Quote = (props) => {
+export const Quote = () => {
     const userContextValue = useContext(UserContext);
 
     const serverIPAddress =
@@ -56,36 +57,10 @@ export const Quote = (props) => {
         }
     }, []);
 
-    async function updateQuote(event) {
-        event.preventDefault();
-        const req = await fetch(
-            `http://${serverIPAddress}:${serverPort}/api/quote`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-access-token':
-                        localStorage.getItem('token'),
-                },
-                body: JSON.stringify({
-                    quote: tempQuote,
-                }),
-            }
-        );
-        const data = await req.json();
-        if (data.status === 'ok') {
-            setQuote(tempQuote);
-            setTempQuote('');
-        } else {
-            console.log('data error');
-            navigate('/login');
-        }
-    }
-
     return (
         <>
             <h2>Twój status: {quote}</h2>
-            <form onSubmit={updateQuote}>
+            <form onSubmit={() => setQuoteInDB(tempQuote)}>
                 <input
                     type="text"
                     placeholder="Status"
