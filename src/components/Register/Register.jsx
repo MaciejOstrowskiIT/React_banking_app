@@ -1,55 +1,29 @@
 import { useState } from 'react';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import './register.css';
+import doRegister from '../../api/auth/doRegister';
 
 function Register() {
-    const middlewareServerIPAddress =
-        process.env
-            .REACT_APP_MIDDLEWARE_SERVER_IP_ADDRESS ||
-        '192.168.1.9';
-    const middlewareServerPort =
-        process.env.REACT_APP_MIDDLEWARE_SERVER_PORT ||
-        '192.168.1.9';
-
-    let navigate = useNavigate();
-
     const [firstName, setFisrtName] = useState('');
     const [lastName, setLastName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
-    async function registerUser(event) {
-        event.preventDefault();
-        const response = await fetch(
-            `http://${middlewareServerIPAddress}:${middlewareServerPort}/api/register`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    firstName,
-                    lastName,
-                    email,
-                    password,
-                }),
-            }
-        );
-        const data = await response.json();
-        console.log(data);
-
-        if (data.status === 'ok') {
-            // window.location.href = '/login';
-            alert('User created');
-            navigate('/login');
-        }
-    }
     return (
         <div className="login">
             <h1>Zarejestruj się</h1>
             <label>Email</label>
-            <form onSubmit={registerUser}>
+            <form
+                onSubmit={() => {
+                    doRegister(
+                        firstName,
+                        lastName,
+                        email,
+                        password
+                    )
+                        ? alert('user created')
+                        : alert('wrong credentials');
+                }}>
                 <input
                     type="email"
                     placeholder="Email"
@@ -86,7 +60,7 @@ function Register() {
                     }
                 />
 
-                <input type="submit" value="Register" />
+                <input type="submit" value="Zarejestruj" />
             </form>
         </div>
     );
