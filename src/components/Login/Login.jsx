@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import doLogin from '../../api/auth/doLogin';
 import './login.css';
 
 const Login = () => {
@@ -48,7 +49,11 @@ const Login = () => {
     return (
         <div className="login">
             <h1>Zaloguj się</h1>
-            <form onSubmit={loginUser}>
+            {/* <form onSubmit={loginUser}> */}
+            <form
+                onSubmit={() => {
+                    doLogin(email, password);
+                }}>
                 <label>Email</label>
                 <input
                     type="email"
