@@ -8,7 +8,6 @@ import {
     Routes,
 } from 'react-router-dom';
 import { Quote } from './components/Quote/Quote';
-// import ProtectedRoutes from './ProtectedRoutes';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import { Landing } from './components/Landing/Landing';
@@ -50,10 +49,6 @@ ReactDOM.render(
                     <Route
                         path="*"
                         element={<Landing />}></Route>
-                    {/* <Route element={<ProtectedRoutes />}>
-                        <Route
-                            path="main"
-                            element={<Quote />}></Route> */}
                     <Route
                         path="main"
                         element={<Quote />}></Route>
