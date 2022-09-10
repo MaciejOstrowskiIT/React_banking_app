@@ -3,6 +3,8 @@
 [![Express Verion](https://img.shields.io/badge/Express.js-4.x-brightgreen)](https://expressjs.com/)
 [![Mongodb Verion](https://img.shields.io/badge/Mongodb-5.3-brightgreen)](https://www.mongodb.com/docs/manual/introduction/)
 
+## React banking app
+
 Banking app created during CODE:ME course using MERN stack
 (Mongodb, Express.js, React.js, Node.js)
 
@@ -15,17 +17,17 @@ minimalistic CSS and HTML. The database which I am using is
 free and non-relative MongoDB with an external cloud
 cluster.
 
-Features:
+## Features
 
--   REST Api
--   React router
--   React Hooks
-    -   State
-    -   Context
-    -   Effect
-    -   Cusotm
--   Cloud and non-relative Database (Mongo)
--   Responsive Web Design
+- REST Api
+- React router
+- React Hooks
+  - State
+  - Context
+  - Effect
+  - Cusotm
+- Cloud and non-relative Database (Mongo)
+- Responsive Web Design
 
 The user can create his own account which is stored in the
 database. After logging in, it is possible to check the
@@ -33,4 +35,23 @@ account balance and send a transfer for a specific user and
 credit card management. Personalization settings contains
 theme changer - "dark" or "light".
 
-HOW TO INSTALL:
+## HOW TO INSTALL:
+
+First, You need to clone whole repository and install dependencies for react:
+
+```
+$ git clone https://github.com/MaciejOstrowskiIT/React_banking_app.git
+$ cd ./react_banking_app
+$ npm install
+$ npm run start
+
+```
+
+Second, You have to install dependencies in "server" folder:
+
+```
+$ cd ./server
+$ npm install
+$ npm run dev
+
+```
