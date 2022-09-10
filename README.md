@@ -25,7 +25,7 @@ cluster.
   - State
   - Context
   - Effect
-  - Cusotm
+  - Custom
 - Cloud and non-relative Database (Mongo)
 - Responsive Web Design
 
