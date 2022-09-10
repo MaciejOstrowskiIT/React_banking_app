@@ -1,7 +1,7 @@
+[![Mongodb Verion](https://img.shields.io/badge/Mongodb-5.3-brightgreen)](https://www.mongodb.com/docs/manual/introduction/)
+[![Express Verion](https://img.shields.io/badge/Express.js-4.x-brightgreen)](https://expressjs.com/)
 [![React Version](https://img.shields.io/badge/React.js-18.2.0-brightgreen)](https://reactjs.org/)
 [![Node Verion](https://img.shields.io/badge/Node.js-16.15.1-brightgreen)](https://nodejs.org/en/)
-[![Express Verion](https://img.shields.io/badge/Express.js-4.x-brightgreen)](https://expressjs.com/)
-[![Mongodb Verion](https://img.shields.io/badge/Mongodb-5.3-brightgreen)](https://www.mongodb.com/docs/manual/introduction/)
 
 ## React banking app
 
