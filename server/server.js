@@ -10,7 +10,6 @@ app.use(express.json());
 app.use(require('./routes/record'));
 // get driver connection
 const dbo = require('./db/conn');
-const { use } = require('./routes/record');
 const User = require('./models/user.model');
 const Transaction = require('./models/transaction.model');
 const jsonwebtoken = require('jsonwebtoken');
@@ -29,9 +28,8 @@ const uri =
 // 'mongodb+srv://mern:mongodb@cluster0.f3hxi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 mongoose.connect(uri);
-// mongoose.connect('mongodb://localhost:27017/mern')
 
-app.get('/hello', (req, res) => {
+app.get('/hello', (res) => {
     res.send('hello world');
 });
 
